@@ -1,0 +1,95 @@
+@import '../styles.scss';
+.dept-ehd {
+    line-height: 1.2rem !important;
+    margin: 0 !important;
+}
+
+.dept {
+    margin: 0 !important;
+    margin-bottom: -1rem !important;
+    line-height: normal !important;
+}
+
+.full-icon {
+    height: 1em;
+    width: 1.25em;
+}
+
+.mapboxgl-canvas-container {
+    height: 100vh;
+    color: white;
+}
+
+#map {
+    border-radius: .5rem;
+    display: flex;
+    height: 75vh;
+    margin: auto;
+    position: relative;
+}
+
+a.btn {
+    &.R-1 {
+        background-color: #fffaca !important;
+    }
+    &.R-2 {
+        background-color: #fff68f !important;
+    }
+    &.R-3 {
+        background-color: #fff100 !important;
+    }
+    &.R-4 {
+        background-color: #ebd417 !important;
+    }
+    &.C-1 {
+        background-color: #a18aad !important;
+    }
+    &.C-2 {
+        background-color: #da2028 !important;
+    }
+    &.C-3 {
+        background-color: #850204 !important;
+        color: white !important;
+        -webkit-text-fill-color: white !important;
+    }
+    &.MX-1 {
+        background-color: #e4a024 !important;
+    }
+    &.MX-2 {
+        background-color: #f37520 !important;
+    }
+    &.MX-3 {
+        background-color: #FF2900 !important;
+    }
+    &.I-1 {
+        background-color: #e1c3dd !important;
+    }
+    &.I-2 {
+        background-color: #A53ED5 !important;
+    }
+    &.I-3 {
+        background-color: #c0188c !important;
+    }
+    &.RDV {
+        background-color: #dddddd !important;
+    }
+    &.PARK {
+        background-color: #229A00 !important;
+    }
+    &.INST {
+        background-color: #0063ff !important;
+    }
+    &.CEM {
+        background-color: #561818 !important;
+        color: white !important;
+        -webkit-text-fill-color: white !important;
+    }
+    &.PORT {
+        background-color: #B81609 !important;
+    }
+    &.EWR {
+        background-color: #820c0c !important;
+        color: white !important;
+        -webkit-text-fill-color: white !important;
+    }
+}

@@ -1,0 +1,25 @@
+<p-card class="p-md-6 p-col-12" header="{{ mapInput.hood }}" ngDefaultControl>
+  {{ mapInput.hood }}
+</p-card>
+<p-card class="p-md-6 p-col-12" ngDefaultControl *ngIf='mapInput.block && mapInput.lot'>
+  <p-header>
+    <h2 [style]="{'text-align':'left', 'margin':'.85rem .85rem 0 1.85rem'}" innerHTML="{{ propInfo.proploc ? propInfo.proploc : propInfo.blocklot | titlecase}}">
+    </h2>
+  </p-header>
+  <p-subheader>
+    <div [innerHTML]="mapInput.labelStyle">
+        <a class='btn {{ propInfo.code }}'>{{ propInfo.code }}</a>
+    </div>
+    <p-button icon="pi pi-copy" label="Block {{ mapInput.block }}" styleClass="ui-button-info"></p-button>
+    <p-button icon="pi pi-copy" label="Lot {{ mapInput.lot }}" styleClass="ui-button-info"></p-button>
+  </p-subheader>
+  <div class="p-grid p-justify-center">
+    <p class="p-col-12"><span innerHTML="{{ propInfo.redevelopment_plan }}"></span></p>
+    <p class="p-col-12"><span innerHTML="{{ propInfo.historic_district }}"></span></p>
+    <p class="p-col-12"><span innerHTML="{{ propInfo.landmark }}"></span></p>
+    <p class="p-col-12" innerHTML="{{ propInfo.property_description }}"></p>
+    <p class="p-col-12" innerHTML="{{ propInfo.permbt }}"></p>
+    <p class="p-col-12" innerHTML="{{ propInfo.permuse }}"></p>
+    <p class="p-col-12" innerHTML="{{ propInfo.pdf }}"></p>
+  </div>
+</p-card>
