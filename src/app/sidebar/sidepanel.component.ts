@@ -4,7 +4,7 @@ import { CartoService } from '../shared';
 import { MapInput, ZoningFields } from '../shared/';
 
 @Component({
-    encapsulation: ViewEncapsulation.ShadowDom,
+    encapsulation: ViewEncapsulation.None,
     selector: 'app-sidepanel',
     styleUrls: ['../app.component.scss'],
     templateUrl: './sidepanel.component.html'
@@ -22,7 +22,7 @@ export class SidePanelComponent {
         public clipboard: Clipboard
         ) {  }
 
-    copyVal(val, object): any {
-      this.clipboard.copy(`${object} ${val}`);
+    copyVal(mapInput: MapInput): any {
+      this.clipboard.copy(`Block ${mapInput.block}, Lot ${mapInput.lot}`);
     }
 }

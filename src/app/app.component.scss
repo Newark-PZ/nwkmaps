@@ -1,19 +1,4 @@
 @import '../styles.scss';
-.dept-ehd {
-    line-height: 1.2rem !important;
-    margin: 0 !important;
-}
-
-.dept {
-    margin: 0 !important;
-    margin-bottom: -1rem !important;
-    line-height: normal !important;
-}
-
-.full-icon {
-    height: 1em;
-    width: 1.25em;
-}
 
 .mapboxgl-canvas-container {
     height: 100vh;
@@ -28,65 +13,99 @@
     position: relative;
 }
 
-a.btn {
+.ui-button {
     &.R-1 {
+        color: black;
         background-color: #fffaca !important;
     }
+
     &.R-2 {
+        color: black;
         background-color: #fff68f !important;
     }
+
     &.R-3 {
+        color: black;
         background-color: #fff100 !important;
     }
+
     &.R-4 {
+        color: black;
         background-color: #ebd417 !important;
     }
+
     &.C-1 {
+        color: black;
         background-color: #a18aad !important;
     }
+
     &.C-2 {
+        color: white;
         background-color: #da2028 !important;
     }
+
     &.C-3 {
         background-color: #850204 !important;
         color: white !important;
         -webkit-text-fill-color: white !important;
     }
+
     &.MX-1 {
+        color: black;
         background-color: #e4a024 !important;
     }
+
     &.MX-2 {
+        color: black;
         background-color: #f37520 !important;
     }
+
     &.MX-3 {
+        color: white;
         background-color: #FF2900 !important;
     }
+
     &.I-1 {
+        color: black;
         background-color: #e1c3dd !important;
     }
+
     &.I-2 {
+        color: white;
         background-color: #A53ED5 !important;
     }
+
     &.I-3 {
+        color: white;
         background-color: #c0188c !important;
     }
+
     &.RDV {
+        color: black;
         background-color: #dddddd !important;
     }
+
     &.PARK {
+        color: white;
         background-color: #229A00 !important;
     }
+
     &.INST {
+        color: white;
         background-color: #0063ff !important;
     }
+
     &.CEM {
         background-color: #561818 !important;
         color: white !important;
         -webkit-text-fill-color: white !important;
     }
+
     &.PORT {
+        color: white;
         background-color: #B81609 !important;
     }
+
     &.EWR {
         background-color: #820c0c !important;
         color: white !important;

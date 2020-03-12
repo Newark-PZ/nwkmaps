@@ -1,32 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
-import * as carto from '@carto/carto-vl';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import carto from '@carto/carto-vl';
 import * as mapboxgl from 'mapbox-gl';
-
-import bbox from '@turf/bbox';
-import { nwkHood } from '../../assets/data/NwkNeighborhoods';
-import { nwkWards } from '../../assets/data/NwkWards';
 
 import { CartoService, MapService, CartoSQLResp, MapInput, ZoningFields } from '../shared/';
 import {
     baseViz,
-    hoods,
-    hoodsInner,
-    hoodsLabels,
     luSource,
     luViz,
-    wardLabels,
-    wards,
-    wardsInner,
     zoningMapViz,
-    zoningSource
+    zoningSource,
+    geoLayerViz
 } from '../layers/layers';
 
 @Component({
+    encapsulation: ViewEncapsulation.None,
     selector: 'app-map',
     styleUrls: ['../../../node_modules/mapbox-gl/src/css/mapbox-gl.css'],
     template: `
-        <div id='map' class='map' [ngStyle]="mapStyle"></div>
-        <app-sidepanel [mapInput]='clicked' [propInfo]='propInfo'></app-sidepanel>
+        <div id='map' [ngStyle]="mapStyle"></div>
+        <p-sidebar [(visible)]="sideBarDisplay" position="right" styleClass="p-col-12 p-md-10 p-lg-8 p-xl-6">
+            <app-sidepanel [mapInput]='clicked' [propInfo]='propInfo'></app-sidepanel>
+        </p-sidebar>
         `
 })
 
@@ -45,20 +39,18 @@ export class MapComponent implements OnInit {
     parcelhover;
     clicked: MapInput = {hood: '', lot: ''};
     propInfo: ZoningFields = { code: '' };
-    geoLayer = hoods;
-    geoLayerInner = hoodsInner;
-    geoLayerLabels = hoodsLabels;
-    layersToAdd = [
-        this.geoLayer,
-        this.geoLayerInner,
-        this.geoLayerLabels
-    ];
+    geoLayer;
     mainLayer = new carto.Layer('mainLayer', zoningSource, zoningMapViz);
-    map: any;
+    popup;
+    map: mapboxgl.Map;
+    sideBarDisplay = false;
 
     constructor(readonly cartodata: CartoService, readonly mapper: MapService) {}
 
     ngOnInit(): void {
+        fetch('assets/data/NwkNeighborhoods.geojson')
+            .then(response => response.json())
+            .then((data) => this.addGeoLayer(data));
         this.map = new mapboxgl.Map({
             center: [-74.1723667, 40.735657],
             container: 'map',
@@ -77,74 +69,51 @@ export class MapComponent implements OnInit {
             apiKey: '0c3e2b7cbff1b34a35e1f2ce3ff94114493bd681',
             user: 'nzlur'
         });
-        this.mainLayer.addTo(this.map, 'watername_ocean');
         const interactivity = new carto.Interactivity(this.mainLayer);
-        this.map.on('load', () => {
-            this.map.addSource('hoodMap', {
-                data: nwkHood,
-                type: 'geojson'
+        this.popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
+        interactivity.on('featureEnter', event => {
+            event.features.forEach(feature => {
+                feature.color.blendTo('opacity(DeepPink, 0.5)');
             });
-            this.layersToAdd.forEach(
-                layer => this.map.addLayer(layer, 'watername_ocean')
-                );
-            this.map.resize();
-            this.map.on('mousemove', 'hoods-inner', e => {
-                if (e.features.length > 0) {
-                    if (this.hoveredStateId) {
-                        this.map.setFeatureState(
-                            { source: 'hoodMap', id: this.hoveredStateId },
-                            { hover: false }
-                        );
-                    }
-                    this.hoveredStateId = e.features[0].id;
-                    this.map.setFeatureState(
-                        { source: 'hoodMap', id: this.hoveredStateId },
-                        { hover: true }
-                    );
+            if (event.features.length > 0) {
+                const vars = event.features[0].variables;
+                this.popup.setHTML(`
+                    <div>
+                        <h3 class ="h3">${vars.proploc.value}</h3>
+                    </div>
+                `);
+                this.popup.setLngLat([event.coordinates.lng, event.coordinates.lat]);
+                if (!this.popup.isOpen()) {
+                    this.popup.addTo(this.map);
                 }
-            });
-            this.map.on('click', 'hoods-inner', e => {
-                if (e.features.length > 0) {
-                    const NAME = 'NAME';
-                    this.hoodClicked = e.features[0].properties[NAME];
-                    const featurebound = bbox(e.features[0].geometry);
-                    this.map.setFilter('hoods-inner', ['!=', 'NAME', this.hoodClicked]);
-                    this.map.fitBounds(featurebound);
-                    this.clicked = {
-                        block: undefined,
-                        hood: this.hoodClicked,
-                        lot: undefined
-                    };
-                }
-            });
-            this.map.on('mousemove', 'mainLayer', e => {
-                if (e.features.length > 0) {
-                    if (this.parcelhover) {
-                        this.map.setFeatureState(
-                            { source: 'mainLayer', id: this.parcelhover },
-                            { hover: false }
-                        );
-                    }
-                    this.parcelhover = e.features[0].id;
-                    this.map.setFeatureState(
-                        { source: 'mainLayer', id: this.parcelhover },
-                        { hover: true }
-                    );
-                }
-            });
-            interactivity.on('featureClick',  e => {
-                const blocklot = 'blocklot';
-                if (e.features.length > 0) {
-                    this.lotClicked = e.features[0].variables[blocklot].value;
-                    this.clicked.block = this.lotClicked.split('-')[0];
-                    this.clicked.lot = this.lotClicked.split('-')[1];
-                    this.getPropInfo(this.clicked);
-                }
+            } else {
+                this.popup.remove();
+            }
+        });
+
+        interactivity.on('featureLeave', event => {
+            event.features.forEach(feature => {
+                    feature.color.reset();
             });
         });
+        interactivity.on('featureClick', event => {
+            if (event.features.length > 0) {
+                // tslint:disable-next-line: no-string-literal
+                this.lotClicked = event.features[0].variables['blocklot'].value;
+                this.clicked.block = this.lotClicked.split('-')[0];
+                this.clicked.lot = this.lotClicked.split('-')[1];
+                this.getPropInfo(this.clicked);
+                this.sideBarDisplay = true;
+            } else {
+                this.sideBarDisplay = false;
+            }
+        });
+        this.mainLayer.addTo(this.map, 'watername_ocean');
     }
     zoneLabel = (data: string) => `<a class="btn ${data}">${data}</a>`;
-
     updateViz(layer): any {
         switch (layer) {
             case 'landuse':
@@ -157,37 +126,57 @@ export class MapComponent implements OnInit {
                 return this.mainLayer.update(zoningSource, baseViz);
         }
     }
+    addGeoLayer(data): any {
+        const source = new carto.source.GeoJSON(data);
+        this.geoLayer = new carto.Layer('geoLayer', source, geoLayerViz);
+        this.geoLayer.addTo(this.map, 'watername_ocean');
+        const geojsonFeatures = this.map.querySourceFeatures('geoLayer').map(feature => {
+            return {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    // tslint:disable-next-line: no-non-null-assertion
+                    coordinates: feature.properties!.getRenderedCentroid()
+                },
+                properties: {
+                    // tslint:disable-next-line: no-string-literal no-non-null-assertion
+                    label_field: `${feature.properties!.NAME}`,
+                }
+            };
+        });
+        this.map.addSource('geoLayerLabelsSource', {
+            type: 'geojson', data: `type: 'FeatureCollection', features: ${geojsonFeatures}`
+        });
+
+        // Style labels
+        this.map.addLayer({
+            id: 'geoLayerLabels',
+            type: 'symbol',
+            source: 'geoLayerLabelsSource',
+            layout: {
+                'text-field': ['get', 'NAME'],
+                'text-letter-spacing': 0.1,
+                'text-max-width': 5,
+                'text-transform': 'uppercase',
+                'text-font': ['Segoe UI', 'Open Sans'],
+            },
+            paint: {
+                'text-color': '#333',
+                'text-halo-color': '#fff',
+                'text-halo-width': 1,
+                'text-halo-blur': 0.5
+            },
+        });
+        this.map.resize();
+    }
     changeGeo(geolayer): any {
-        switch (geolayer) {
-            case 'hoods':
-                if (this.map.getLayer('wards')) {
-                    this.map.removeLayer('wards');
-                    this.map.removeLayer('wards-inner');
-                    this.map.removeLayer('wards-labels');
-                    this.map.addLayer(hoods, 'watername_ocean');
-                    this.map.addLayer(hoodsInner, 'watername_ocean');
-                    this.map.addLayer(hoodsLabels, 'watername_ocean');
-                }
-                break;
-            case 'wards':
-                if (!this.map.getSource('wardMap')) {
-                    this.map.addSource('wardMap', {
-                        data: nwkWards,
-                        type: 'geojson'
-                    });
-                }
-                if (this.map.getLayer('hoods')) {
-                    this.map.removeLayer('hoods');
-                    this.map.removeLayer('hoods-inner');
-                    this.map.removeLayer('hoods-labels');
-                    this.map.addLayer(wards, 'watername_ocean');
-                    this.map.addLayer(wardsInner, 'watername_ocean');
-                    this.map.addLayer(wardLabels, 'watername_ocean');
-                }
-                break;
-            default:
-                return;
-        }
+        fetch(`assets/data/${geolayer}.geojson`)
+            .then(response => response.json())
+            .then((data) => {
+                // Define layer
+                const source = new carto.source.GeoJSON(data);
+                this.geoLayer.update(source, geoLayerViz);
+        });
     }
     getPropInfo(mapInputter: MapInput): void {
         // tslint:disable-next-line: no-non-null-assertion

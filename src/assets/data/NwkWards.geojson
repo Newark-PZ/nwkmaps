@@ -1,5 +1,3 @@
-// tslint:disable
-export const nwkWards =
 {
   "type" : "FeatureCollection",
   "features" : [
@@ -1247,7 +1245,7 @@ export const nwkWards =
       },
       "properties" : {
         "OBJECTID" : 1,
-        "WARD_NAME" : "WEST",
+        "NAME": "WEST",
         "Shape_Length" : 77158.568030935028,
         "Shape_Area" : 76051702.670995295
       }
@@ -2664,7 +2662,7 @@ export const nwkWards =
       },
       "properties" : {
         "OBJECTID" : 2,
-        "WARD_NAME" : "NORTH",
+        "NAME": "NORTH",
         "Shape_Length" : 48294.833023572261,
         "Shape_Area" : 78151114.209613591
       }
@@ -3449,7 +3447,7 @@ export const nwkWards =
       },
       "properties" : {
         "OBJECTID" : 3,
-        "WARD_NAME" : "CENTRAL",
+        "NAME": "CENTRAL",
         "Shape_Length" : 62750.206980405586,
         "Shape_Area" : 96203390.645838857
       }
@@ -4170,7 +4168,7 @@ export const nwkWards =
       },
       "properties" : {
         "OBJECTID" : 4,
-        "WARD_NAME" : "SOUTH",
+        "NAME": "SOUTH",
         "Shape_Length" : 61861.643505447595,
         "Shape_Area" : 150783623.81012616
       }
@@ -5023,7 +5021,7 @@ export const nwkWards =
       },
       "properties" : {
         "OBJECTID" : 5,
-        "WARD_NAME" : "EAST",
+        "NAME": "EAST",
         "Shape_Length" : 83309.180973649622,
         "Shape_Area" : 329653943.73126298
       }

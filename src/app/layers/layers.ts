@@ -5,93 +5,12 @@ carto.setDefaultAuth({
     user: 'nzlur'
 });
 
-export const hoods = {
-    id: 'hoods',
-    layout: {},
-    paint: {
-        'line-color': '#627BC1',
-        'line-width': 2
-    },
-    source: 'hoodMap',
-    type: 'line'
-};
-
-export const hoodsInner = {
-    id: 'hoods-inner',
-    layout: {},
-    paint: {
-        'fill-color': '#627BC1',
-        'fill-opacity': [
-            'case',
-            [
-                'boolean',
-                [
-                    'feature-state',
-                    'hover'
-                ],
-                false
-            ],
-            1,
-            0.5
-        ]
-    },
-    source: 'hoodMap',
-    type: 'fill'
-};
-export const hoodsLabels = {
-    id: 'hoods-labels',
-    layout: {
-        'text-field': ['get', 'NAME'],
-        'text-letter-spacing': 0.1,
-        'text-max-width': 5,
-        'text-transform': 'uppercase'
-    },
-    source: 'hoodMap',
-    type: 'symbol'
-};
-export const wards = {
-    id: 'wards',
-    layout: {},
-    paint: {
-        'line-color': '#627BC1',
-        'line-width': 2
-    },
-    source: 'wardMap',
-    type: 'line'
-};
-export const wardsInner = {
-    id: 'wards-inner',
-    layout: {},
-    paint: {
-        'fill-color': '#627BC1',
-        'fill-opacity': [
-            'case',
-            [
-                'boolean',
-                [
-                    'feature-state',
-                    'hover'
-                ],
-                false
-            ],
-            1,
-            0.5
-        ]
-    },
-    source: 'wardMap',
-    type: 'fill'
-};
-export const wardLabels = {
-    id: 'wards-labels',
-    layout: {
-        'text-field': ['get', 'WARD_NAME'],
-        'text-letter-spacing': 0.1,
-        'text-max-width': 5,
-        'text-transform': 'uppercase'
-    },
-    source: 'wardMap',
-    type: 'symbol'
-};
+export const geoLayerViz = new carto.Viz(`
+        @v_features: viewportFeatures($NAME)
+        color: opacity(#627BC1,0.5)
+        strokeWidth: scaled(2, 12)
+        strokeColor: #627BC1
+      `);
 export const zoningSource = new carto.source.Dataset(`
         public.zoning_2
       `);

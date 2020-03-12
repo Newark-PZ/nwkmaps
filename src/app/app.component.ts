@@ -22,11 +22,11 @@ export class AppComponent implements OnInit {
       {
         items: [
           {
-            command: () => { this.changeGeo('hoods'); },
+            command: () => { this.changeGeo('NwkNeighborhoods'); },
             label: 'Neighborhoods'
           },
           {
-            command: () => { this.changeGeo('wards'); },
+            command: () => { this.changeGeo('NwkWards'); },
             label: 'Wards'
           }
         ],
