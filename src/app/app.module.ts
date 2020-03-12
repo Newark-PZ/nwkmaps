@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { sharedServices } from './shared';
 import { MapComponent } from './map/map.component';
 import { LayerComponent } from './layers/layers.component';
-import { MousePositionComponent } from './controls/mouse-position.component';
 import { SidePanelComponent } from './sidebar/sidepanel.component';
 
 import { ButtonModule } from 'primeng/button';
@@ -47,7 +46,6 @@ const primeModules = [
     AppComponent,
     MapComponent,
     LayerComponent,
-    MousePositionComponent,
     SidePanelComponent
   ],
   imports: [

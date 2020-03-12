@@ -40,7 +40,7 @@ export class MapComponent implements OnInit {
     clicked: MapInput = {hood: '', lot: ''};
     propInfo: ZoningFields = { code: '' };
     geoLayer;
-    mainLayer = new carto.Layer('mainLayer', zoningSource, zoningMapViz);
+    mainLayer = new carto.Layer('mainLayer', zoningSource, baseViz);
     popup;
     map: mapboxgl.Map;
     sideBarDisplay = false;
@@ -85,9 +85,10 @@ export class MapComponent implements OnInit {
             if (event.features.length > 0) {
                 const vars = event.features[0].variables;
                 this.popup.setHTML(`
-                    <div>
-                        <h3 class ="h3">${vars.proploc.value}</h3>
-                    </div>
+                  <div class="map-popup">
+                    <h3>${vars.proploc.value}</h3>
+                    <p>Block ${vars.blocklot.value.split('-')[0]}, Lot ${vars.blocklot.value.split('-')[1]}</p>
+                  </div>
                 `);
                 this.popup.setLngLat([event.coordinates.lng, event.coordinates.lat]);
                 if (!this.popup.isOpen()) {
@@ -134,42 +135,19 @@ export class MapComponent implements OnInit {
         const source = new carto.source.GeoJSON(data);
         this.geoLayer = new carto.Layer('geoLayer', source, geoLayerViz);
         this.geoLayer.addTo(this.map, 'watername_ocean');
-        const geojsonFeatures = this.map.querySourceFeatures('geoLayer').map(feature => {
-            return {
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    // tslint:disable-next-line: no-non-null-assertion
-                    coordinates: feature.properties!.getRenderedCentroid()
-                },
-                properties: {
-                    // tslint:disable-next-line: no-string-literal no-non-null-assertion
-                    label_field: `${feature.properties!.NAME}`,
-                }
-            };
-        });
-        this.map.addSource('geoLayerLabelsSource', {
-            type: 'geojson', data: `type: 'FeatureCollection', features: ${geojsonFeatures}`
-        });
-
-        // Style labels
-        this.map.addLayer({
-            id: 'geoLayerLabels',
-            type: 'symbol',
-            source: 'geoLayerLabelsSource',
+        this.map.on('load', () => {
+          this.map.addSource('GeoLabelSource', {type: 'geojson', data});
+          this.map.addLayer({
+            id: 'geoLabels',
             layout: {
                 'text-field': ['get', 'NAME'],
                 'text-letter-spacing': 0.1,
-                'text-max-width': 5,
-                'text-transform': 'uppercase',
-                'text-font': ['Segoe UI', 'Open Sans'],
+                'text-max-width': 4.5,
+                'text-transform': 'uppercase'
             },
-            paint: {
-                'text-color': '#333',
-                'text-halo-color': '#fff',
-                'text-halo-width': 1,
-                'text-halo-blur': 0.5
-            },
+            source: 'GeoLabelSource',
+            type: 'symbol'
+          });
         });
         this.map.resize();
     }
@@ -180,6 +158,8 @@ export class MapComponent implements OnInit {
                 // Define layer
                 const source = new carto.source.GeoJSON(data);
                 this.geoLayer.update(source, geoLayerViz);
+                const geolayersourcex = this.map.getSource('GeoLabelSource') as mapboxgl.GeoJSONSource;
+                geolayersourcex.setData(data);
         });
     }
     getPropInfo(mapInputter: MapInput): void {

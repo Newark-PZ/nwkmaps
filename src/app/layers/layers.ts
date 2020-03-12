@@ -7,8 +7,8 @@ carto.setDefaultAuth({
 
 export const geoLayerViz = new carto.Viz(`
         @v_features: viewportFeatures($NAME)
-        color: opacity(#627BC1,0.5)
-        strokeWidth: scaled(2, 12)
+        color: rgba(0,0,0,0)
+        strokeWidth: scaled(1, 12)
         strokeColor: #627BC1
       `);
 export const zoningSource = new carto.source.Dataset(`

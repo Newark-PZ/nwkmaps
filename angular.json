@@ -34,12 +34,13 @@
                             }
                         ],
                         "styles": [
+                            "src/loading.scss",
                             "node_modules/mapbox-gl/src/css/mapbox-gl.css",
                             "node_modules/primeicons/primeicons.css",
                             "node_modules/primeng/resources/primeng.min.css",
                             "src/styles.scss"
                         ],
-                        "scripts": [ ]
+                        "scripts": []
                     },
                     "configurations": {
                         "production": {
