@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Newark Zoning Map</title>
+    <base href="/nwkmaps/">    <style>
+        .app-loading {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: auto;
+        }
+
+        .app-loading .spinner {
+            height: 200px;
+            width: 200px;
+            animation: rotate 2s linear infinite;
+            transform-origin: center center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .app-loading .spinner .path {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            animation: dash 1.5s ease-in-out infinite;
+            stroke-linecap: round;
+            stroke: #ddd;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+            }
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+            }
+        }
+    </style>
+    <meta name="theme-color" content="#1976d2">
+<link rel="stylesheet" href="styles.7dbe49e5f51c21454092.css"></head>
+
+<body id="body">
+    <app-root>
+        <div class="app-loading">
+            <div class="logo">
+                <svg class="spinner" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
+    </app-root>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+<script src="runtime-es2015.13ea55c0fc1a7ebecd69.js" type="module"></script><script src="runtime-es5.13ea55c0fc1a7ebecd69.js" nomodule defer></script><script src="polyfills-es5.76816e5a325d1dc7b90b.js" nomodule defer></script><script src="polyfills-es2015.6afa638c75e54dd64e04.js" type="module"></script><script src="main-es2015.7393c143b5b23f1ea210.js" type="module"></script><script src="main-es5.7393c143b5b23f1ea210.js" nomodule defer></script></body>
+
+</html>
