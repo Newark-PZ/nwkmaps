@@ -15,9 +15,9 @@ import {
 @Component({
     encapsulation: ViewEncapsulation.None,
     selector: 'app-map',
-    styleUrls: ['../../../node_modules/mapbox-gl/src/css/mapbox-gl.css'],
     template: `
-        <div id='map' [ngStyle]="mapStyle"></div>
+        <div id='map' #map [ngStyle]="mapStyle"></div>
+        <p-contextMenu [target]="map" [model]="contextMenu" ></p-contextMenu>
         <p-sidebar [(visible)]="sideBarDisplay" position="right" styleClass="p-col-12 p-md-10 p-lg-8 p-xl-6">
             <app-sidepanel [mapInput]='clicked' [propInfo]='propInfo'></app-sidepanel>
         </p-sidebar>
@@ -44,6 +44,10 @@ export class MapComponent implements OnInit {
     popup;
     map: mapboxgl.Map;
     sideBarDisplay = false;
+    contextMenu = [
+        { icon: 'pi pi-info-circle', label: 'info' },
+        { icon: 'pi pi-download', label: 'download' }
+    ];
 
     constructor(readonly cartodata: CartoService, readonly mapper: MapService) {}
 
