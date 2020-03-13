@@ -1,3 +1,8 @@
+/**
+ * Function that returns color of zoning district
+ * @param zonedist the zone in reference as string
+ * @example zoningColors('R-1')
+ */
 export const zoningColors = (zonedist: string) => {
     switch (zonedist) {
         case 'R':
@@ -35,6 +40,11 @@ export const zoningColors = (zonedist: string) => {
             break;
     }
 };
+/**
+ * Function that returns actual text of zoning district from code
+ * @param zonedist the zone in reference as string
+ * @example zoningNames('R')
+ */
 export const zoningNames = (zonedist: string) => {
     switch (zonedist) {
         case 'R':

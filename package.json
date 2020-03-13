@@ -8,7 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "build-ngh": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --base-href /nwkmaps/"
+        "build-ngh": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --base-href /nwkmaps/",
+        "declaration:build": "rm -f index.d.ts && tsc -p declaration.tsconfig.json"
     },
     "private": true,
     "dependencies": {

@@ -14,6 +14,9 @@ export interface CartoFields {
     | number
     | boolean;
 }
+/**
+ * Interface model of response returned from query of NZLUR Zoning Data
+ */
 export interface CartoSQLResp {
     rows: [
         | CartoFields
@@ -105,7 +108,9 @@ export interface CartoSQLResp {
     };
     total_rows?: number;
 }
-
+/**
+ * Interface model of response returned from query of NZLUR Zoning Data
+ */
 export interface ZoningFields {
     cartodb_id?: string;
     the_geom?: string;

@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import carto from '@carto/carto-vl';
 import * as mapboxgl from 'mapbox-gl';
 
-import { CartoService, MapService, CartoSQLResp, MapInput, ZoningFields } from '../shared/';
+import { CartoService, CartoSQLResp, MapElementsService, MapInput, ZoningFields } from '../shared/';
 import {
     baseViz,
     luSource,
@@ -49,7 +49,7 @@ export class MapComponent implements OnInit {
         { icon: 'pi pi-download', label: 'download' }
     ];
 
-    constructor(readonly cartodata: CartoService, readonly mapper: MapService) {}
+    constructor(readonly cartodata: CartoService, public mapEls: MapElementsService) {}
 
     ngOnInit(): void {
         fetch('assets/data/NwkNeighborhoods.geojson')
@@ -60,7 +60,7 @@ export class MapComponent implements OnInit {
             container: 'map',
             dragRotate: false,
             maxZoom: 18,
-            style: carto.basemaps.positron,
+            style: carto.basemaps.voyager,
             touchZoomRotate: false,
             zoom: 12
         });
@@ -68,7 +68,7 @@ export class MapComponent implements OnInit {
             showCompass: false,
             showZoom: true
         });
-        this.map.addControl(nav, 'top-left');
+        this.map.addControl(nav, 'bottom-right');
         carto.setDefaultAuth({
             apiKey: '0c3e2b7cbff1b34a35e1f2ce3ff94114493bd681',
             user: 'nzlur'
@@ -135,20 +135,7 @@ export class MapComponent implements OnInit {
         const source = new carto.source.GeoJSON(data);
         this.geoLayer = new carto.Layer('geoLayer', source, geoLayerViz);
         this.geoLayer.addTo(this.map, 'watername_ocean');
-        this.map.on('load', () => {
-          this.map.addSource('GeoLabelSource', {type: 'geojson', data});
-          this.map.addLayer({
-            id: 'geoLabels',
-            layout: {
-                'text-field': ['get', 'NAME'],
-                'text-letter-spacing': 0.1,
-                'text-max-width': 4.5,
-                'text-transform': 'uppercase'
-            },
-            source: 'GeoLabelSource',
-            type: 'symbol'
-          });
-        });
+        this.mapEls.addLabels(this.map, data);
         this.map.resize();
     }
     changeGeo(geolayer): any {
@@ -158,18 +145,16 @@ export class MapComponent implements OnInit {
                 // Define layer
                 const source = new carto.source.GeoJSON(data);
                 this.geoLayer.update(source, geoLayerViz);
-                const geolayersourcex = this.map.getSource('GeoLabelSource') as mapboxgl.GeoJSONSource;
-                geolayersourcex.setData(data);
+                const geolayersource = this.map.getSource('GeoLabelSource') as mapboxgl.GeoJSONSource;
+                geolayersource.setData(data);
         });
     }
     getPropInfo(mapInputter: MapInput): void {
-        // tslint:disable-next-line: no-non-null-assertion
+        // tslint:disable: no-non-null-assertion
         this.cartodata.getZoning('*', mapInputter.block!, mapInputter.lot!)
             .subscribe(
                 ( data: CartoSQLResp ) => {
-                    // tslint:disable-next-line: no-non-null-assertion
                     this.propInfo = data.rows[0]!;
-                    // tslint:disable-next-line: no-non-null-assertion
                     this.clicked.labelStyle! = this.zoneLabel(this.propInfo.code ? this.propInfo.code : '');
                 });
     }
