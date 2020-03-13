@@ -1,2 +1,8 @@
-<p-menubar [model]="menu"></p-menubar>
+<button type="text" (click)="toggleMenu()" pButton icon="pi pi-plus" label="Show"></button>
+<app-menu
+    [menuButtons]="menu"
+    [geoStyles]="geoStyleList"
+    [parcelStyles]="parcelStylesList"
+    [layers]="layersList"
+></app-menu>
 <app-map></app-map>

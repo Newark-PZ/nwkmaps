@@ -4,6 +4,14 @@
     color: white;
 }
 
+.menuBtns {
+    .ui-menuitem-text {
+        display: flex;
+        flex-direction: row;
+    }
+    display: inherit;
+}
+
 #map {
     border-radius: .5rem;
     display: flex;

@@ -18,3 +18,4 @@ export * from './google.service';
 export * from './map.service';
 export * from './mapid.service';
 export * from './map-elements.service';
+export * from './menu.models';

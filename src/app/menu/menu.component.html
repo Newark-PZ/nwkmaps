@@ -1,0 +1,45 @@
+<p-sidebar #menu [(visible)]="menuDisplay">
+    <p-panel>
+        <p-header>
+            NWK Planning & Zoning
+        </p-header>
+        <div style="display:flex;flex-direction:row">
+            <p-menu #menuBtns [model]="menuButtons"></p-menu>
+            <div *ngIf="menuClicked" class="p-col-7">
+                <div class="p-grid menupanel" *ngIf="geoVisible">
+                    <div class="p-col-12" *ngFor="let geo of geoStyles">
+                        <p-radioButton name="{{geo.name}}" value="{{geo.value}}" label="{{geo.label}}" [(ngModel)]="geo.status" (onClick)="valueChanged(geo, 'geo', $event)" inputId="{{geo.id}}"></p-radioButton>
+                    </div>
+                </div>
+                <div class="p-grid menupanel" *ngIf="parcelVisible">
+                    <div class="p-col-12" *ngFor="let parcel of parcelStyles">
+                        <p-radioButton name="{{parcel.name}}" value="{{parcel.value}}" label="{{parcel.label}}" [(ngModel)]="parcel.status" (onClick)="valueChanged(parcel, 'parcel', $event)" inputId="{{parcel.id}}"></p-radioButton>
+                    </div>
+                </div>
+                <p-table [value]="layers" *ngIf="layersVisible" selectionMode="multiple">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="p-col-2"></th>
+                            <th class="p-col-8">Layer Name</th>
+                            <th class="p-col-2"><i class="pi pi-eye"></i></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-layer let-index="rowIndex">
+                        <tr [pReorderableRow]="index" [pSelectableRow]="layer">
+                            <td>
+                                <i class="pi pi-sort" style="display:flex;justify-content:center;" pReorderableRowHandle></i>
+                            </td>
+                            <td>{{ layer.name }}</td>
+                            <td>
+                                <p-tableCheckbox [index]="index" style="display:flex;justify-content:center;" [(ngModel)]="layer.status"></p-tableCheckbox>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <p-footer>
+            <button pButton type="button" (click)="menuDisplay = false" icon="pi pi-times" label="Back" class="ui-button-info" style="margin-right: .25em"></button>
+        </p-footer>
+    </p-panel>
+</p-sidebar>

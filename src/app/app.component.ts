@@ -1,6 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MapComponent } from './map/map.component';
-import { MenuItem } from 'primeng/api';
+import { MenuComponent } from './menu/menu.component';
+import { MenuRadio, Layers } from './shared';
+import { MenuItem } from 'primeng/api/menuitem';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
   @ViewChild(MapComponent) map: MapComponent;
+  @ViewChild(MenuComponent) menuComp: MenuComponent;
   collapsed = true;
   menu: Array<MenuItem>;
   parcelView;
@@ -16,49 +19,99 @@ export class AppComponent implements OnInit {
     'border-radius': '.25rem',
     top: '1rem'
   };
+  menuDisplay = false;
+  geoStyleList: Array<MenuRadio>;
+  parcelStylesList: Array<MenuRadio>;
+  layersList: Array<Layers>;
 
   ngOnInit() {
     this.menu = [
       {
-        items: [
-          {
-            command: () => { this.changeGeo('NwkNeighborhoods'); },
-            label: 'Neighborhoods'
-          },
-          {
-            command: () => { this.changeGeo('NwkWards'); },
-            label: 'Wards'
-          }
-        ],
-        label: 'Geographies'
+        label: 'Geographies',
+        icon: 'pi pi-compass',
+        id: 'geo',
+        styleClass: 'menuBtns',
+        command: (event) => this.menuComp.menuBtnClick(event.item.id)
       },
       {
-        items: [
-          {
-            command: () => { this.changeLayer('base'); },
-            id: 'base',
-            label: 'Base'
-          },
-          {
-            command: () => { this.changeLayer('zoning'); },
-            id: 'zoning',
-            label: 'Zoning'
-          },
-          {
-            command: () => { this.changeLayer('landuse'); },
-            id: 'landuse',
-            label: 'Land Use'
-          }
-        ],
-        label: 'Parcel Style'
+        label: 'Parcel Style',
+        icon: 'pi pi-palette',
+        id: 'parcels',
+        styleClass: 'menuBtns',
+        command: (event) => this.menuComp.menuBtnClick(event.item.id)
+      },
+      {
+        label: 'Overlays',
+        icon: 'pi pi-list',
+        id: 'overlays',
+        styleClass: 'menuBtns',
+        command: (event) => this.menuComp.menuBtnClick(event.item.id)
+      }
+    ];
+    this.geoStyleList = [
+      {
+        id: 'NwkNeighborhoods',
+        label: 'Neighborhoods',
+        name: 'geos',
+        status: true,
+        value: 'hoods'
+      },
+      {
+        id: 'NwkWards',
+        label: 'Wards',
+        name: 'geos',
+        status: false,
+        value: 'wards'
+      }
+    ];
+    this.parcelStylesList = [
+      {
+        id: 'base',
+        label: 'Base',
+        name: 'geos',
+        status: true,
+        value: 'base'
+      },
+      {
+        id: 'zoning',
+        label: 'Zoning',
+        name: 'geos',
+        status: false,
+        value: 'zoning'
+      },
+      {
+        id: 'landuse',
+        label: 'Land Use',
+        name: 'geos',
+        status: false,
+        value: 'landuse'
+      }
+    ];
+    this.layersList = [
+      {
+        index: 0,
+        name: 'Historic Districts',
+        status: true
+      },
+      {
+        index: 1,
+        name: 'Redevelopment Areas',
+        status: true
+      },
+      {
+        index: 2,
+        name: 'Transit',
+        status: true
       }
     ];
   }
-
   changeLayer(layer): any {
     this.map.updateViz(layer);
   }
   changeGeo(layer): any {
     this.map.changeGeo(layer);
+  }
+  toggleMenu() {
+    this.menuComp.menuDisplay = true;
   }
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import carto from '@carto/carto-vl';
 import * as mapboxgl from 'mapbox-gl';
 
-import { CartoService, CartoSQLResp, MapElementsService, MapInput, ZoningFields } from '../shared/';
+import { CartoService, CartoSQLResp, MapElementsService, MapInput, ZoningFields, GoogleService } from '../shared/';
 import {
     baseViz,
     luSource,
@@ -44,12 +44,15 @@ export class MapComponent implements OnInit {
     popup;
     map: mapboxgl.Map;
     sideBarDisplay = false;
+    contextMenuCoords: mapboxgl.LngLat;
     contextMenu = [
         { icon: 'pi pi-info-circle', label: 'info' },
-        { icon: 'pi pi-download', label: 'download' }
+        { icon: 'pi pi-download', label: 'Show Street View', command: () => {
+          this.google.openStreetView(this.contextMenuCoords.lat, this.contextMenuCoords.lng);
+        }}
     ];
 
-    constructor(readonly cartodata: CartoService, public mapEls: MapElementsService) {}
+    constructor(readonly cartodata: CartoService, public google: GoogleService, public mapEls: MapElementsService) {}
 
     ngOnInit(): void {
         fetch('assets/data/NwkNeighborhoods.geojson')
@@ -79,9 +82,6 @@ export class MapComponent implements OnInit {
             closeOnClick: false
         });
         interactivity.on('featureEnter', event => {
-            event.features.forEach(feature => {
-                feature.color.blendTo('opacity(DeepPink, 0.5)');
-            });
             if (event.features.length > 0) {
                 const vars = event.features[0].variables;
                 this.popup.setHTML(`
@@ -98,12 +98,6 @@ export class MapComponent implements OnInit {
                 this.popup.remove();
             }
         });
-
-        interactivity.on('featureLeave', event => {
-            event.features.forEach(feature => {
-                    feature.color.reset();
-            });
-        });
         interactivity.on('featureClick', event => {
             if (event.features.length > 0) {
                 // tslint:disable-next-line: no-string-literal
@@ -117,6 +111,7 @@ export class MapComponent implements OnInit {
             }
         });
         this.mainLayer.addTo(this.map, 'watername_ocean');
+        this.map.on('contextmenu', (event: mapboxgl.MapMouseEvent) => this.contextMenuCoords = event.lngLat);
     }
     zoneLabel = (data: string) => `<a class="btn ${data}">${data}</a>`;
     updateViz(layer): any {

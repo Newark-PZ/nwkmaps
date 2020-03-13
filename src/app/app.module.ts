@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { sharedServices } from './shared';
 import { MapComponent } from './map/map.component';
+import { MenuComponent } from './menu/menu.component';
 import { LayerComponent } from './layers/layers.component';
 import { SidePanelComponent } from './sidebar/sidepanel.component';
 
@@ -16,14 +17,15 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
 import { MenuModule } from 'primeng/menu';
-import {MenubarModule} from 'primeng/menubar';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { SidebarModule } from 'primeng/sidebar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 const primeModules = [
@@ -31,10 +33,11 @@ const primeModules = [
   CardModule,
   ContextMenuModule,
   DropdownModule,
-  MenubarModule,
-  MenuModule,
   FieldsetModule,
+  MenuModule,
   OverlayPanelModule,
+  PanelModule,
+  RadioButtonModule,
   SidebarModule,
   SplitButtonModule,
   StepsModule,
@@ -45,6 +48,7 @@ const primeModules = [
   declarations: [
     AppComponent,
     MapComponent,
+    MenuComponent,
     LayerComponent,
     SidePanelComponent
   ],
@@ -53,6 +57,7 @@ const primeModules = [
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ClipboardModule,
     primeModules,
