@@ -6,7 +6,9 @@ export interface MenuRadio {
   status: boolean;
 }
 export interface Layers {
+  id: string;
   index: number;
   name: string;
   status: boolean;
+  value: string;
 }

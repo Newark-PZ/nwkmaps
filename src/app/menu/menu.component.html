@@ -1,45 +1,49 @@
-<p-sidebar #menu [(visible)]="menuDisplay">
-    <p-panel>
-        <p-header>
-            NWK Planning & Zoning
-        </p-header>
+<p-sidebar #menu [(visible)]="menuDisplay" (onShow)="btnTextDisplay = 'flex'" (onHide)="menuClicked = false" styleClass="p-col-10 p-md-8 p-lg-6 p-xl-4">
+        <p-fieldset legend="Newark Planning & Zoning" [toggleable]="false">
+            Department of Economic & Housing Development
+        </p-fieldset>
         <div style="display:flex;flex-direction:row">
-            <p-menu #menuBtns [model]="menuButtons"></p-menu>
-            <div *ngIf="menuClicked" class="p-col-7">
+            <div class="p-col p-grid p-justify-start p-col-align-start">
+                <button [id]="btn.id" *ngFor="let btn of menuButtons" [class]="btn.styleClass" (click)="menuBtnClick(btn.id, btn.label)">
+                    <i [class]="btn.icon"></i>
+                    <span [style.display]="btnTextDisplay">{{ btn.label }}</span>
+                </button>
+                <button class="p-col-12 menuBtns" (click)="menuDisplay = false">
+                    <i class="pi pi-times"></i>
+                    <span [style.display]="btnTextDisplay">Back</span>
+                </button>
+            </div>
+            <p-card *ngIf="menuClicked" styleClass="menuPanel p-col-12" class="p-col-10" style="padding-top: 0;" subheader="{{ visibleTable }}">
+                <p-header class="p-col-12 menuBtns" (click)="menuReset()">
+                    <i class="pi pi-chevron-left"></i>
+                    back
+                </p-header>
                 <div class="p-grid menupanel" *ngIf="geoVisible">
-                    <div class="p-col-12" *ngFor="let geo of geoStyles">
-                        <p-radioButton name="{{geo.name}}" value="{{geo.value}}" label="{{geo.label}}" [(ngModel)]="geo.status" (onClick)="valueChanged(geo, 'geo', $event)" inputId="{{geo.id}}"></p-radioButton>
-                    </div>
+                    <p-radioButton class="p-col-12 menuRadio" labelStyleClass="menuRadioLabel p-col-12" *ngFor="let geo of geoStyles" name="{{geo.name}}" [value]="geo.id" label="{{geo.label}}" [(ngModel)]="currentGeoVal" (ngModelChange)="valueChanged(geo, 'geo', $event)" inputId="{{geo.id}}"></p-radioButton>
                 </div>
                 <div class="p-grid menupanel" *ngIf="parcelVisible">
-                    <div class="p-col-12" *ngFor="let parcel of parcelStyles">
-                        <p-radioButton name="{{parcel.name}}" value="{{parcel.value}}" label="{{parcel.label}}" [(ngModel)]="parcel.status" (onClick)="valueChanged(parcel, 'parcel', $event)" inputId="{{parcel.id}}"></p-radioButton>
-                    </div>
+                    <p-radioButton class="p-col-12 menuRadio" labelStyleClass="menuRadioLabel p-col-12" *ngFor="let parcel of parcelStyles" name="{{parcel.name}}" [value]="parcel.id" label="{{parcel.label}}" [(ngModel)]="currentParcelVal" (ngModelChange)="valueChanged(parcel, 'parcel', $event)" inputId="{{parcel.id}}"></p-radioButton>
                 </div>
-                <p-table [value]="layers" *ngIf="layersVisible" selectionMode="multiple">
+                <p-table class="p-grid menupanel" [value]="layers" *ngIf="layersVisible" selectionMode="multiple" dataKey="id" stateStorage="local" (onRowReorder)="layersChanged($event)" [(selection)]="layersSelected"  (onRowSelect)="layersChanged($event)">
                     <ng-template pTemplate="header">
-                        <tr>
+                        <tr class="menupanelTable">
                             <th style="p-col-2"></th>
                             <th class="p-col-8">Layer Name</th>
                             <th class="p-col-2"><i class="pi pi-eye"></i></th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-layer let-index="rowIndex">
-                        <tr [pReorderableRow]="index" [pSelectableRow]="layer">
+                    <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                        <tr [pReorderableRow]="index" [pSelectableRow]="rowData" [pSelectableRowIndex]="index">
                             <td>
-                                <i class="pi pi-sort" style="display:flex;justify-content:center;" pReorderableRowHandle></i>
+                            <i class="pi pi-sort" style="display:flex;justify-content:center" pReorderableRowHandle></i>
                             </td>
-                            <td>{{ layer.name }}</td>
+                            <td>{{ rowData.name }}</td>
                             <td>
-                                <p-tableCheckbox [index]="index" style="display:flex;justify-content:center;" [(ngModel)]="layer.status"></p-tableCheckbox>
+                                <p-checkbox checkboxIcon="pi pi-eye" [style]="{'display':'flex','justify-content':'center'}" binary="true" [value]="rowData"></p-checkbox>
                             </td>
                         </tr>
                     </ng-template>
                 </p-table>
-            </div>
+            </p-card>
         </div>
-        <p-footer>
-            <button pButton type="button" (click)="menuDisplay = false" icon="pi pi-times" label="Back" class="ui-button-info" style="margin-right: .25em"></button>
-        </p-footer>
-    </p-panel>
 </p-sidebar>

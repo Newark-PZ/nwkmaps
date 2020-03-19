@@ -8,11 +8,11 @@ import { AppComponent } from './app.component';
 import { sharedServices } from './shared';
 import { MapComponent } from './map/map.component';
 import { MenuComponent } from './menu/menu.component';
-import { LayerComponent } from './layers/layers.component';
 import { SidePanelComponent } from './sidebar/sidepanel.component';
 
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { CheckboxModule } from 'primeng/checkbox';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -24,13 +24,16 @@ import { SidebarModule } from 'primeng/sidebar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 const primeModules = [
   ButtonModule,
   CardModule,
+  CheckboxModule,
   ContextMenuModule,
   DropdownModule,
   FieldsetModule,
@@ -41,7 +44,8 @@ const primeModules = [
   SidebarModule,
   SplitButtonModule,
   StepsModule,
-  TableModule
+  TableModule,
+  ToastModule
 ];
 
 @NgModule({
@@ -49,7 +53,6 @@ const primeModules = [
     AppComponent,
     MapComponent,
     MenuComponent,
-    LayerComponent,
     SidePanelComponent
   ],
   imports: [
@@ -63,7 +66,7 @@ const primeModules = [
     primeModules,
     AppRoutingModule
   ],
-  providers: [sharedServices],
+  providers: [sharedServices, MessageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,8 +1,13 @@
-<button type="text" (click)="toggleMenu()" pButton icon="pi pi-plus" label="Show"></button>
+<button class="menuBtns" (click)="toggleMenu()" style="margin: 1.5rem; position: absolute;z-index: 10; background-color: white;">
+    <i class="pi pi-bars"></i>
+    <span class="p-col menuToggleBtnText">Menu</span>
+</button>
 <app-menu
     [menuButtons]="menu"
     [geoStyles]="geoStyleList"
     [parcelStyles]="parcelStylesList"
     [layers]="layersList"
+    (geoValChange)="changeGeo($event)"
+    (parcelValChange)="changeParcels($event)"
 ></app-menu>
 <app-map></app-map>

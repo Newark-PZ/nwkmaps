@@ -1,0 +1,752 @@
+{
+    "id": "00f582aa-824c-11e4-886f-0e018d66dc29",
+    "version": "0.1.0",
+    "title": "Newark Zoning Map",
+    "description": "<p>Newark NJ Zoning Map</p> ",
+    "scrollwheel": true,
+    "legends": true,
+    "url": null,
+    "map_provider": "leaflet",
+    "bounds": [
+        [
+            40.72412029357941,
+            -74.22543525695801
+        ],
+        [
+            40.74156703135052,
+            -74.1725206375122
+        ]
+    ],
+    "center": "[40.73284423432053, -74.19897794723511]",
+    "zoom": 16,
+    "updated_at": "2020-02-20 20:33:02 UTC",
+    "layers": [
+        {
+            "options": {
+                "visible": true,
+                "type": "Tiled",
+                "name": "HERE Carnav Day Grey",
+                "className": "httpssbasemapsapiherecommaptile21maptilenewestcarnavdaygreyzxy256png8lgengtokena7tbpacepg9mj_zghvkt9qapp_idkuyppsdxzznpffjskt24",
+                "base_type": "default",
+                "urlTemplate": "https://{s}.base.maps.api.here.com/maptile/2.1/maptile/newest/carnav.day.grey/{z}/{x}/{y}/256/png8?lg=eng\\u0026token=A7tBPacePg9Mj_zghvKt9Q\\u0026app_id=KuYppsdXZznpffJsKT24",
+                "minZoom": "0",
+                "maxZoom": "20",
+                "attribution": "\\u0026copy;2019 HERE <a href='http://here.net/services/terms' target='_blank'>Terms of use</a>",
+                "subdomains": "1234",
+                "style": null,
+                "read_only": true,
+                "category": "Here",
+                "order": 0,
+                "id": "38130a64-94aa-4a26-b022-b2750214c3de"
+            },
+            "infowindow": null,
+            "tooltip": null,
+            "id": "38130a64-94aa-4a26-b022-b2750214c3de",
+            "order": 0,
+            "type": "tiled"
+        },
+        {
+            "type": "layergroup",
+            "options": {
+                "user_name": "nzlur",
+                "maps_api_template": "https://{user}.carto.com:443",
+                "sql_api_template": "https://{user}.carto.com:443",
+                "tiler_protocol": "http",
+                "tiler_domain": "carto.com",
+                "tiler_port": "80",
+                "sql_api_protocol": "http",
+                "sql_api_domain": "carto.com",
+                "sql_api_endpoint": "/api/v2/sql",
+                "sql_api_port": 80,
+                "filter": "mapnik",
+                "layer_definition": {
+                    "stat_tag": "00f582aa-824c-11e4-886f-0e018d66dc29",
+                    "version": "1.0.1",
+                    "layers": [
+                        {
+                            "id": "421c02af-583a-462b-9b02-c76845b1c281",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [
+                                    {
+                                        "position": 0,
+                                        "name": "accessor_1",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1,
+                                        "name": "accessory",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 2,
+                                        "name": "block",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 3,
+                                        "name": "blocklot",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 4,
+                                        "name": "building_1",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 5,
+                                        "name": "building_t",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 6,
+                                        "name": "code",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 7,
+                                        "name": "historic_d",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 8,
+                                        "name": "landmark",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 9,
+                                        "name": "lot",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 10,
+                                        "name": "primary_1",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 11,
+                                        "name": "primary_us",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 12,
+                                        "name": "property_d",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 13,
+                                        "name": "proploc",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 14,
+                                        "name": "redevelopm",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 15,
+                                        "name": "x",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 16,
+                                        "name": "y",
+                                        "title": true
+                                    }
+                                ],
+                                "template_name": "",
+                                "template": "  <div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-box close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       <P><B>*BLOCK - LOT*</B></P>       <p>{{blocklot}}</p>       <p><B>*PROPERTY LOCATION* </B></p>       <p>{{proploc}}</p>       <p><B>*ZONE*</b></P>       <p>{{code}}</p>       <p><B>*PRIMARY USE*</B></p>       <p>{{primary_us}}</p>        <p><B>*ASSESSORY USE*</B></p>       <p>{{accessory}}</p>       <p><B>*BUILDING TYPE*</B></P>       <p>{{building_t}}</p>       <p><B>REDEVELOPMENT ZONE</B></p>       <p>{{redevelopm}}</p>       <p><B>HISTORIC DISTRICTS</B></p>       <p>{{historic_d}}</p>       <P><B>LANDMARKS</B></P>       <p>{{landmark}}</p>     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 400,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [
+                                    {
+                                        "position": 13,
+                                        "name": "proploc",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "accessor_1",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "accessory",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "block",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "blocklot",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "building_1",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "building_t",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "code",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "historic_d",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "landmark",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "lot",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "primary_1",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "primary_us",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "property_d",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "redevelopm",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "x",
+                                        "title": true
+                                    },
+                                    {
+                                        "position": 1.7976931348623157e+308,
+                                        "name": "y",
+                                        "title": true
+                                    }
+                                ],
+                                "template_name": "",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>     <p>{{proploc}}</p>     <p>{{blocklot}}</p>     <p>{{code}}</p>   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "custom",
+                                "show_title": false,
+                                "title": "",
+                                "template": "<div class='cartodb-legend custom'> <h1><font face='comic sans ms, Courier New, Courier, monospace' color='#e6550d'><marquee bgcolor='#e7e1ef'  ></marquee></font></h1>       Zoning Codes            <li>                                                <ul>                                                        <li>                                                  <div class='bullet' style='background:#fffaca'></div> <a href='https://drive.google.com/file/d/1IUz9jCMvl1BUxXIp2IGPBQRcSQkVrkJk/view?usp=sharing?page_id=785\\u0026preview=true#R-1'  style='color: #2c7fb8; text-decoration: none;' target='_blank'>INDEX - \\u0026nbsp; INDEX LISTING</a>                                                            </li>                                      <li>                                                  <div class='bullet' style='background:#fffaca'></div> <a href='https://drive.google.com/file/d/1LK6DUsk-rl5-tH-8U8ObmQ5ea9D4UcPl/view?usp=sharing?page_id=785\\u0026preview=true#R-1'  style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-1 \\u0026nbsp; ONE-FAMILY RESIDENTIAL</a>                                                                              <li>                                                  <div class='bullet' style='background:#fff68f'></div> <a href='https://drive.google.com/file/d/1OayW8FP5_1a3C_2CQE9yI77aXLJqQ0FA/view?usp=sharing?page_id=785\\u0026preview=true#R-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-2 \\u0026nbsp; ONE-TO-TWO-FAMILY RESIDENTIAL</a>                                                           </li>                                                           <li>                                                  <div class='bullet' style='background:#fff100'></div> <a href='https://drive.google.com/file/d/1O2vXSnUVpCDdDMEd2sFNKChLenyL5UpT/view?usp=sharing?page_id=785\\u0026preview=true#R-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-3 \\u0026nbsp; ONE-TO-THREE-FAMILY \\u0026 TOWNHOUSE RESIDENTIAL</a>                                                           </li>                                                       <li>                                                  <div class='bullet' style='background:#ebd417'></div> <a href='https://drive.google.com/file/d/1t9xisuQtvTAhMBeTkEGEiWAAnSWrgwjq/view?usp=sharing?page_id=785\\u0026preview=true#R-4' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-4 \\u0026nbsp; LOW-RISE MULTIFAMILY RESIDENTIAL</a>                                                           </li>                                                            <li>                                                  <div class='bullet' style='background:#b49d34'></div> <a href='https://drive.google.com/file/d/1zh4Ovlsm3adB9pdBLsOts_j4Xbfn9rPu/view?usp=sharing?page_id=785\\u0026preview=true#R-5' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-5 \\u0026nbsp; MID-RISE MULTIFAMILY RESIDENTIAL</a>                                                       </li>                                                       <li>                                                  <div class='bullet' style='background:#998439'></div> <a href='https://drive.google.com/file/d/1h9w1ttkyAwZW_egxOSG2c6QLLRslUAqH/view?usp=sharing?page_id=785\\u0026preview=true#R-6' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-6 \\u0026nbsp; HIGH-RISE MULTIFAMILY RESIDENTIAL</a>                                                       </li>                                                           <li>                                                  <div class='bullet' style='background:#fbc8b3'></div> <a href='https://drive.google.com/file/d/189Nv9zJIOh9Xu1mej40sQRw0u7mS-WWa/view?usp=sharing?page_id=785\\u0026preview=true#C-1' style='color: #2c7fb8; text-decoration: none;' target='_blank'>C-1 \\u0026nbsp; NEIGHBORHOOD COMMERCIAL</a>                                                               </li>                                                       <li>                                                  <div class='bullet' style='background:#da2028'></div> <a href='https://drive.google.com/file/d/17W0H1DNDTgVobqcAxeIYTJtZYGYi27ZX/view?usp=sharing?page_id=785\\u0026preview=true#C-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>C-2 \\u0026nbsp; COMMUNITY COMMERCIAL</a>                                                       </li>                                                         <li>                                                  <div class='bullet' style='background:#b12a2f'></div> <a href='https://drive.google.com/file/d/1H-yzguPyJixsU7EqyRneqfsWewpHVtM4/view?usp=sharing?page_id=785\\u0026preview=true#C-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>C-3 \\u0026nbsp; REGIONAL COMMERCIAL</a>                                                       </li>                                                       <li>                                                  <div class='bullet' style='background:#e4a024'></div> <a href='https://drive.google.com/file/d/159zmZpq424EbJZwpnWRVhRp8NkNPhpLz/view?usp=sharing?page_id=785\\u0026preview=true#MX-1' style='color: #2c7fb8; text-decoration: none;' target='_blank'>MX-1 \\u0026nbsp; MIXED USE, RESIDENTIAL/COMMERCIAL</a>                                                           </li>                                                           <li>                                                  <div class='bullet' style='background:#f37520'></div> <a href='https://drive.google.com/file/d/18FWuMPDjHlLrQM4WTZ5HqqbJkKYDTv17/view?usp=sharing?page_id=785\\u0026preview=true#MX-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>MX-2 \\u0026nbsp; MIXED USE, RESIDENTIAL/COMMERCIAL/INDUSTRIAL</a>                                                       </li>                              <li>                                                  <div class='bullet' style='background:#f37520'></div> <a href='https://drive.google.com/file/d/12DDmnRz3d2SlUOatbQ-3WmuSTHrEwGXS/view?usp=sharing https://drive.google.com/file/d/17eqJ6mynaL32QsSA74XaC0lQQAZzCr7-/view?usp=sharing?page_id=785\\u0026preview=true#MX-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>MX-3 \\u0026nbsp; MIXED USE, RESIDENTIAL \\u0026 COMMERCIAL(HIGH DENSITY)</a>                                                       </li>\\t                                               <li>                                                  <div class='bullet' style='background:#e1c3dd'></div> <a href='https://drive.google.com/file/d/1G1PlzPDkkz6OJndO-fVJuTVxkOrzTzOl/view?usp=sharing?page_id=785\\u0026preview=true#I-1' style='color: #2c7fb8; text-decoration: none;' target='_blank'>I-1 \\u0026nbsp; LIGHT INDUSTRIAL</a>                                                       </li>                                                           <li>                                                  <div class='bullet' style='background:#d589ba'></div> <a href='https://drive.google.com/file/d/1UeJoOFOlhHt4o3eDydPR8K6tFh7UFDPd/view?usp=sharing?page_id=785\\u0026preview=true#I-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>I-2 \\u0026nbsp; MEDIUM INDUSTRIAL</a>                                                       </li>                                                           <li>                                                  <div class='bullet' style='background:#c0188c'></div> <a href='https://drive.google.com/file/d/1aJWwQ4O4q29Qtm4gZ7AVl7JdeZB1v_SY/view?usp=sharing?page_id=785\\u0026preview=true#I-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>I-3 \\u0026nbsp; HEAVY INDUSTRIAL</a>                                                       </li>                                                          <li>                                                  <div class='bullet' style='background:#006ab6'></div> <a href='https://goo.gl/images/UHCPsc?page_id=785\\u0026preview=true#INST' style='color: #2c7fb8; text-decoration: none;' target='_blank'>INST \\u0026nbsp; INSTITUTIONAL</a>                                                       </li>                                                       <li>                                                  <div class='bullet' style='background:#4d8844'></div> <a ?page_id=785\\u0026preview=true#PARK' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PARK \\u0026nbsp; PARKS \\u0026 OPEN SPACE</a>                                                       </li>                                                       <li>                                                  <div class='bullet' style='background:#8b6239'></div> <a ?page_id=785\\u0026preview=true#CEM' style='color: #2c7fb8; text-decoration: none;' target='_blank'>CEM \\u0026nbsp; CEMETERY</a>                                                       </li>                                                        <li>                                                  <div class='bullet' style='background:#8c2e4f'></div> <a href='https://drive.google.com/file/d/1Ed6TpRREEnuPwDaOoLH4PaaAQGjpqiPY/view?usp=sharing?page_id=785\\u0026preview=true#EWR' style='color: #2c7fb8; text-decoration: none;' target='_blank'>EWR / EWS-S \\u0026nbsp; AIRPORT / AIRPORT SUPPORT</a>                                                       </li>                                                       <li>                                                  <div class='bullet' style='background:#72305e'></div> <a href='https://drive.google.com/file/d/1HYlzfDMTano0ozaH8hk2-BAcF-e43o90/view?usp=sharing?page_id=785\\u0026preview=true#PORT' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PORT \\u0026nbsp; PORT</a>                                                           </li>                                                           <li>                                                  <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/1Yh_afHKCC4ZeJURbqQFh6tiOdTAVe1nL/view?usp=sharing?page_id=785\\u0026preview=true#RDV' style='color: #2c7fb8; text-decoration: none;' target='_blank'>RDV / SD \\u0026nbsp; REDEVELOPMENT / SPECIAL DISTRICTS</a>                        </li>               \\t                    \\t                                   <li>                                        <li>           PDF Documents, Links, Portal, and Maps            <li>                    <li>                                                  <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/1d_7DnJQ5M5jdfhwx5RwATWMef5R8EOzu/view?usp=sharing?page_id=785\\u0026preview=true#RDV' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; ZONING ORDINANCE</a>          \\t                                   </li>  \\t                                   <li>                                        <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/drive/u/1/folders/1-PTAU8sYvt-erESqk4ODqDnW2nX7pFgt' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; INSTRUCTIONS FOR SITE PLAN APPROVAL</a>          \\t                                   </li>                                    <li>                                                         <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/drive/u/1/folders/1-PTAU8sYvt-erESqk4ODqDnW2nX7pFgt' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; ZONING DOCUMENT</a>                  \\t                                   </li>   \\t                            <li>                                                        <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/18qY2qb51_vwRIvFOGGHhreLCuf4AUoK5/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; OFFICIAL ZONING MAP</a>                  \\t                                   </li>   \\t                         <li>                                                        <div class='bullet' style='background:#dddddd'></div> <a href='https://sites.google.com/view/zoningmap' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PORTAL \\u0026nbsp; Zoning Documents \\u0026 Minutes</a>                 \\t                                   </li>        \\t                      <li>                                                        <div class='bullet' style='background:#72305e'></div> <a href='https://drive.google.com/file/d/1EaUiiDuVYeBk96C3E13ohPftN21G-NPo/view?usp=sharing?' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF \\u0026nbsp; 2019 MONTHLY HEARING OF THE BOARDS DATES </a>                 \\t                                   </li>                \\t             <li>                                                        <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_001/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.1 </a>                 \\t                                   </li>                                 \\t             <li>                                                        <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_002/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.2 </a>                 \\t                                   </li>                                                         \\t             <li>                                                        <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_003/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.3 </a>                 \\t                                   </li>                                                        \\t             <li>                                                        <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_004/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.4 </a>                 \\t                                   </li>       \\t             <li>                                                        <div class='bullet' style='background:#72305e'></div> <a href='https://nzlur.carto.com/viz/f29323e8-df1d-4c80-8573-030e2aca5bd2/public_map' style='color: #2c7fb8; text-decoration: none;' target='_blank'> MAP \\u0026nbsp;ALTERNATIVE TREATMENT MAP </a>**               \\t                                   </li>                                                 \\t             <li>                                                        <div class='bullet' style='background:#72305e'></div> <a href='https://nzlur.carto.com/viz/6b0b626a-e94c-4c1e-ac28-d97a89f576e7/public_map' style='color: #2c7fb8; text-decoration: none;' target='_blank'> MAP \\u0026nbsp;NEW ZONING MAP (UPDATE) </a> **              \\t                                   </li>                                              \\t       <li>                                                       <div class='bullet' style='background:#72305e'></div> <a href='https://newarkportal.us/Home/Zoning' style='color: #2c7fb8; text-decoration: none;' target='_blank'> MAP \\u0026nbsp;Online Application </a> ***                 \\t                                   </li> ",
+                                "visible": true,
+                                "items": [
+                                    {
+                                        "name": "Untitled",
+                                        "visible": true,
+                                        "value": "#cccccc",
+                                        "sync": true
+                                    }
+                                ]
+                            },
+                            "order": 1,
+                            "visible": true,
+                            "options": {
+                                "layer_name": "Zoning Codes",
+                                "cartocss": "/** category visualization */  #zoning_2 {    polygon-opacity: 0.7;    line-color: #FFF;    line-width: 0.5;    line-opacity: 1; }  #zoning_2[code='C-2'] {    polygon-fill: #da2028; } #zoning_copy[code='I-1'] {    polygon-fill: #e1c3dd; } #zoning_copy[code='I-3'] {    polygon-fill: #c0188c; } #zoning_copy[code='MX-1'] {    polygon-fill: #e4a024; } #zoning_copy[code='MX-2'] {    polygon-fill: #f37520; } #zoning_copy[code='R-1'] {    polygon-fill: #fffaca; } #zoning_copy[code='R-2'] {    polygon-fill: #fff68f; } #zoning_copy[code='R-3'] {    polygon-fill: #fff100; } #zoning_copy[code='R-4'] {    polygon-fill: #ebd417; } #zoning_copy[code='RDV'] {    polygon-fill: #dddddd; } #zoning_copy[code='EWR'] {    polygon-fill: #820c0c; } #zoning_copy[code='PARK'] {    polygon-fill: #229A00; } #zoning_copy[code='CEM'] {    polygon-fill: #561818; } #zoning_copy[code='INST'] {    polygon-fill: #0063ff; } #zoning_copy[code='PORT'] {    polygon-fill: #B81609; } #zoning_copy[code='MX-3'] {    polygon-fill: #FF2900; } #zoning_copy[code='C-3'] {    polygon-fill: #850204; } #zoning_copy[code='C-1'] {    polygon-fill: #fbc8b3; } #zoning_copy[code='I-2'] {    polygon-fill: #A53ED5; }",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id,proploc,accessor_1,accessory,block,blocklot,building_1,building_t,code,historic_d,landmark,lot,primary_1,primary_us,property_d,redevelopm,x,y",
+                                "sql": "SELECT * FROM zoning_2",
+                                "table_name": "''."
+                            }
+                        },
+                        {
+                            "id": "24d3801f-ad5d-4573-bb02-ac25cd07a0ae",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": true,
+                                        "position": 2
+                                    }
+                                ],
+                                "template_name": "table/views/infowindow_light",
+                                "template": "<div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-button close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       {{#content.fields}}         {{#title}}<h4>{{title}}</h4>{{/title}}         {{#value}}           <p {{#type}}class='{{ type }}'{{/type}}>{{{ value }}}</p>         {{/value}}         {{^value}}           <p class='empty'>null</p>         {{/value}}       {{/content.fields}}     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 226,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": true,
+                                        "position": 2
+                                    }
+                                ],
+                                "template_name": "tooltip_light",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>   {{#fields}}     {{#title}}     <h4>{{title}}</h4>     {{/title}}     <p>{{{ value }}}</p>   {{/fields}}   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "custom",
+                                "show_title": false,
+                                "title": "",
+                                "template": "<div class=style='background:#00034''cartodb-legend custom'>\\t  <ul>  <ul>                       <li>                  <div class='bullet' style='background:#000000'></div> <a href='https://drive.google.com/file/d/0B7N772haJyi-UERyMFgyZlpRVm8/view?page_id=785\\u0026preview=true#PDF'  style='color: #000001; text-decoration: none;' target='_blank'>PDF \\u0026nbsp; HISTORIC DISTRICTS MAPS</a>                             </li>  </ul>  </div>",
+                                "visible": true,
+                                "items": [
+                                    {
+                                        "name": "Untitled",
+                                        "visible": true,
+                                        "value": "#cccccc",
+                                        "sync": true
+                                    }
+                                ]
+                            },
+                            "order": 2,
+                            "visible": true,
+                            "options": {
+                                "layer_name": "Historic Districts",
+                                "cartocss": "/** category visualization */  #landmarkdistricts_160420 {    polygon-opacity: 0.7;    line-color: #FFF;    line-width: 0.5;    line-opacity: 1; }  #landmarkdistricts_160420[name='Forest Hill Historic District'] {    polygon-fill: #A6CEE3; } #landmarkdistricts_160420[name='Four Corners Historic District'] {    polygon-fill: #1F78B4; } #landmarkdistricts_160420[name='James Street Commons District'] {    polygon-fill: #B2DF8A; } #landmarkdistricts_160420[name='Lincoln Park Historic District'] {    polygon-fill: #33A02C; } #landmarkdistricts_160420[name='Military Park Commons Historic District'] {    polygon-fill: #FB9A99; } #landmarkdistricts_160420[name='North Broad Street Historic District'] {    polygon-fill: #E31A1C; } #landmarkdistricts_160420[name='Weequahic Park Historic District'] {    polygon-fill: #FDBF6F; }",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id,name",
+                                "sql": "select * from landmarkdistricts_160420",
+                                "table_name": "''."
+                            }
+                        },
+                        {
+                            "id": "45571223-02c1-483c-9309-ec5a9bfb800e",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": false,
+                                        "position": 1
+                                    }
+                                ],
+                                "template_name": "table/views/infowindow_light",
+                                "template": "<div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-button close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       {{#content.fields}}         {{#title}}<h4>{{title}}</h4>{{/title}}         {{#value}}           <p {{#type}}class='{{ type }}'{{/type}}>{{{ value }}}</p>         {{/value}}         {{^value}}           <p class='empty'>null</p>         {{/value}}       {{/content.fields}}     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 226,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": true,
+                                        "position": 1
+                                    }
+                                ],
+                                "template_name": "tooltip_light",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>   {{#fields}}     {{#title}}     <h4>{{title}}</h4>     {{/title}}     <p>{{{ value }}}</p>   {{/fields}}   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "custom",
+                                "show_title": false,
+                                "title": "",
+                                "template": "<div class='cartodb-legend custom'>                           <ul>                           \\t     <li>                            <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142324451.png' style='width:11px;height:11px'>       <a href='https://drive.google.com/file/d/12jNloFP9PCgCACE8D2NkjaEBRA3bzYOe/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'> RIVERFRONT PUBLIC ACCESS AND REDEVELOPMENT PLAN</a></div>                                </li>                                   <li>                            <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142326592.png' style='width:11px;height:11px'>  <a href='https://drive.google.com/file/d/1I79cSbNr2MBW7XTUA4dsVi1Tw5ktFtcg/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'>KENT/BRENNER/SPRINGFIELD REDEVELOPMENT PLAN</a></div>                                    </li>                                        <li>                                <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142332243.png' style='width:11px;height:11px'>  <a href='https://drive.google.com/file/d/1qjt3hK8FAzbkOCM3zOMy2rdam9O0hrLQ/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'> BROAD STREET STATION DISTRICT PLAN</a></div>                                </li>                                        <li>                               <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142335234.png' style='width:11px;height:11px'>  <a href='https://drive.google.com/file/d/1XiKV5msWgYxzhk-fApGE7okTkSRuBkWd/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINCOLN PARK REDEVELOPMENT PLAN</a></div>                                    </li>                                        <li>                                <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142332405.png' sthttps://drive.google.com/file/d/1JOCHwt7NrBRJjL47raQwZ1XsseebxhFu/view?usp=sharing'style='width:11px;height:11px'> <a href='https://drive.google.com/file/d/1iMhMk7nw2_1LURkGPmfRcBGuoOQui1E3/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'> SOUTH BERGEN REDEVELOPMENT PLAN</a></div>                                </li>                                    <li>                            <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142332466.png' style='width:11px;height:11px'> <a href='https://drive.google.com/file/d/19kf6LP2E-_Vkn_lsRYPXERlhL85ydoAX/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'> LIVING DOWNTOWN PLAN</a></div>                                </li>                                        <li>                               <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142332527.png' style='width:11px;height:11px'><a href='https://drive.google.com/file/d/1r0NvK51tnOeDy2pYzCUEy9PbVn8o0tY3/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'> OLD THIRD WARD URBAN RENEWAL PLAN</a></div>                                </li>                                     <li>                               <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142332588.png' style='width:11px;height:11px'><a href='https://drive.google.com/file/d/1_OkGJZd5RNjLrEJ3qsd_v3yPo5TE2LWl/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'> NORTHERN FAIRMOUNT REDEVELOPMENT PLAN</a></div>                                 </li>                                      <li>                               <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142333059.png' style='width:11px;height:11px'><a href='https://drive.google.com/file/d/1YGa0PMS5bggyLZPzPOvDUJka6OTUQ-PE/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'>  DOWNTOWN CORE DISTRICT REDEVELOPMENT PLAN</a></div>                                </li>              \\t                          <li>                                                    </ul>                            <div><img src='https://s3.amazonaws.com/com.cartodb.users-assets.production/production/nzlur/assets/201412142324450.png' style='width:11px;height:11px'>       <a ' style='color: #2c7fb8; text-decoration: none;' target='_blank'> 'CLICK' TITLE FOR PDF REDEVELOPMENT PLAN'</a></div>               \\t ",
+                                "visible": true,
+                                "items": []
+                            },
+                            "order": 3,
+                            "visible": false,
+                            "options": {
+                                "layer_name": "Redevelopment Plan Areas",
+                                "cartocss": "/** simple visualization */  #redevelopmentplanareas_170208{   polygon-fill: #FFFFFF;   polygon-opacity: 0;   line-color: #F11810;   line-width: 2.5;   line-opacity: 1; }  #redevelopmentplanareas_170208::labels {   text-name: [name];   text-face-name: 'DejaVu Sans Book';   text-size: 11;   text-label-position-tolerance: 0;   text-fill: #F11810;   text-halo-fill: #FFF;   text-halo-radius: 2;   text-dy: 0;   text-allow-overlap: true;   text-placement: interior;   text-placement-type: dummy; } ",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id,name",
+                                "sql": "select * from redevelopmentplanareas_170208",
+                                "table_name": "''."
+                            }
+                        },
+                        {
+                            "id": "3b9ec640-5c8c-4f13-b760-54bcc26f3ca5",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": true,
+                                        "position": 9
+                                    },
+                                    {
+                                        "name": "namelsad",
+                                        "title": true,
+                                        "position": 10
+                                    },
+                                    {
+                                        "name": "click_link",
+                                        "title": true,
+                                        "position": 1.7976931348623157e+308
+                                    }
+                                ],
+                                "template_name": "table/views/infowindow_light",
+                                "template": "<div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-button close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       {{#content.fields}}         {{#title}}<h4>{{title}}</h4>{{/title}}         {{#value}}           <p {{#type}}class='{{ type }}'{{/type}}>{{{ value }}}</p>         {{/value}}         {{^value}}           <p class='empty'>null</p>         {{/value}}       {{/content.fields}}     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 226,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": true,
+                                        "position": 9
+                                    },
+                                    {
+                                        "name": "namelsad",
+                                        "title": true,
+                                        "position": 10
+                                    }
+                                ],
+                                "template_name": "tooltip_light",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>   {{#fields}}     {{#title}}     <h4>{{title}}</h4>     {{/title}}     <p>{{{ value }}}</p>   {{/fields}}   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "custom",
+                                "show_title": true,
+                                "title": "Opportunity Zones",
+                                "template": "<div class='cartodb-legend custom'>\\t <div class='legend-title'>Opportunity Zones</div> <a href='https://www.choosenj.com/business-assistance/opportunity-zones'  style='color: #000000; text-decoration: none;' target='_blank'>OP ZONES \\u0026nbsp; Opportunity Zones Website</a>  <ul>  <li>  \\t<div class='bullet' style='background:#229A00'></div> \\tOP ZONES  </li>  </ul>  </div>",
+                                "visible": true,
+                                "items": [
+                                    {
+                                        "name": "OP ZONES",
+                                        "visible": true,
+                                        "value": "#229A00",
+                                        "sync": true
+                                    }
+                                ]
+                            },
+                            "order": 4,
+                            "visible": false,
+                            "options": {
+                                "layer_name": "Opportunity Zones",
+                                "cartocss": "/** simple visualization */  #opertunity_zones{   polygon-fill: #229A00;   polygon-opacity: 0.3;   line-color: #FF2900;   line-width: 3;   line-opacity: 0.8; }  #opertunity_zones::labels {   text-name: [name];   text-face-name: 'DejaVu Sans Book';   text-size: 10;   text-label-position-tolerance: 0;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: -10;   text-allow-overlap: true;   text-placement: point;   text-placement-type: dummy; } ",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id,name,namelsad",
+                                "sql": "select * from opertunity_zones",
+                                "table_name": "''."
+                            }
+                        },
+                        {
+                            "id": "3ce0a084-edeb-440b-a205-333973a2d369",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": true,
+                                        "position": 1
+                                    },
+                                    {
+                                        "name": "click_link",
+                                        "title": true,
+                                        "position": 1.7976931348623157e+308
+                                    }
+                                ],
+                                "template_name": "table/views/infowindow_light",
+                                "template": "<div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-button close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       {{#content.fields}}         {{#title}}<h4>{{title}}</h4>{{/title}}         {{#value}}           <p {{#type}}class='{{ type }}'{{/type}}>{{{ value }}}</p>         {{/value}}         {{^value}}           <p class='empty'>null</p>         {{/value}}       {{/content.fields}}     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 225,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [
+                                    {
+                                        "name": "name",
+                                        "title": true,
+                                        "position": 1
+                                    }
+                                ],
+                                "template_name": "tooltip_light",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>   {{#fields}}     {{#title}}     <h4>{{title}}</h4>     {{/title}}     <p>{{{ value }}}</p>   {{/fields}}   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "custom",
+                                "show_title": false,
+                                "title": "",
+                                "template": "",
+                                "visible": true,
+                                "items": [
+                                    {
+                                        "name": "Untitled",
+                                        "visible": true,
+                                        "value": "#cccccc",
+                                        "sync": true
+                                    }
+                                ]
+                            },
+                            "order": 5,
+                            "visible": true,
+                            "options": {
+                                "layer_name": "nwkneighborhoods",
+                                "cartocss": "/** simple visualization */  #nwkneighborhoods{   polygon-fill: #FFFFFF;   polygon-opacity: 0;   line-color: #6B0FB2;   line-width: 2;   line-opacity: 1; }  #nwkneighborhoods::labels {   text-name: [name];   text-face-name: 'DejaVu Sans Book';   text-size: 16;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 4.5;   text-dy: -10;   text-allow-overlap: true;   text-placement: point;   text-placement-type: simple; } ",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id,name",
+                                "sql": "select * from nwkneighborhoods",
+                                "table_name": "''."
+                            }
+                        },
+                        {
+                            "id": "3e4808d1-c3c9-43d5-b388-942c72ec941d",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [],
+                                "template_name": "table/views/infowindow_light",
+                                "template": "<div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-button close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       {{#content.fields}}         {{#title}}<h4>{{title}}</h4>{{/title}}         {{#value}}           <p {{#type}}class='{{ type }}'{{/type}}>{{{ value }}}</p>         {{/value}}         {{^value}}           <p class='empty'>null</p>         {{/value}}       {{/content.fields}}     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 226,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [],
+                                "template_name": "tooltip_light",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>   {{#fields}}     {{#title}}     <h4>{{title}}</h4>     {{/title}}     <p>{{{ value }}}</p>   {{/fields}}   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "none",
+                                "show_title": false,
+                                "title": "",
+                                "template": "",
+                                "visible": true
+                            },
+                            "order": 6,
+                            "visible": false,
+                            "options": {
+                                "layer_name": "wards",
+                                "cartocss": "/** simple visualization */  #wards{   polygon-fill: #FFFFFF;   polygon-opacity: 0.7;   polygon-comp-op: overlay;   line-color: #000000;   line-width: 2;   line-opacity: 0.9; }  #wards::labels {   text-name: [ward_name];   text-face-name: 'DejaVu Sans Book';   text-size: 20;   text-label-position-tolerance: 0;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 2;   text-dy: -14;   text-allow-overlap: true;   text-placement: point;   text-placement-type: dummy; } ",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id",
+                                "sql": "select * from wards",
+                                "table_name": "''."
+                            }
+                        },
+                        {
+                            "id": "b28d2dab-dd91-4d35-80d8-31192da3c5db",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [
+                                    {
+                                        "name": "blocklot",
+                                        "title": true,
+                                        "position": 1
+                                    },
+                                    {
+                                        "name": "code",
+                                        "title": true,
+                                        "position": 2
+                                    },
+                                    {
+                                        "name": "proploc",
+                                        "title": true,
+                                        "position": 11
+                                    }
+                                ],
+                                "template_name": "table/views/infowindow_light",
+                                "template": "<div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-button close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       {{#content.fields}}         {{#title}}<h4>{{title}}</h4>{{/title}}         {{#value}}           <p {{#type}}class='{{ type }}'{{/type}}>{{{ value }}}</p>         {{/value}}         {{^value}}           <p class='empty'>null</p>         {{/value}}       {{/content.fields}}     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 226,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [],
+                                "template_name": "tooltip_light",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>   {{#fields}}     {{#title}}     <h4>{{title}}</h4>     {{/title}}     <p>{{{ value }}}</p>   {{/fields}}   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "none",
+                                "show_title": false,
+                                "title": "",
+                                "template": "<div class='cartodb-legend custom'> <h1><font face='comic sans ms, Courier New, Courier, monospace' color='#e6550d'><marquee bgcolor='#e7e1ef'  ></marquee></font></h1>       Zoning Codes           <li>                                        <ul>                                                    <li>                                              <div class='bullet' style='background:#fffaca'></div> <a href='https://drive.google.com/file/d/1IUz9jCMvl1BUxXIp2IGPBQRcSQkVrkJk/view?usp=sharing?page_id=785\\u0026preview=true#R-1'  style='color: #2c7fb8; text-decoration: none;' target='_blank'>INDEX - \\u0026nbsp; INDEX LISTING</a>                                                        </li>                                  <li>                                              <div class='bullet' style='background:#fffaca'></div> <a href='https://drive.google.com/file/d/1LK6DUsk-rl5-tH-8U8ObmQ5ea9D4UcPl/view?usp=sharing?page_id=785\\u0026preview=true#R-1'  style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-1 \\u0026nbsp; ONE-FAMILY RESIDENTIAL</a>                                                                          <li>                                              <div class='bullet' style='background:#fff68f'></div> <a href='https://drive.google.com/file/d/1OayW8FP5_1a3C_2CQE9yI77aXLJqQ0FA/view?usp=sharing?page_id=785\\u0026preview=true#R-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-2 \\u0026nbsp; ONE-TO-TWO-FAMILY RESIDENTIAL</a>                                                       </li>                                                       <li>                                              <div class='bullet' style='background:#fff100'></div> <a href='https://drive.google.com/file/d/1O2vXSnUVpCDdDMEd2sFNKChLenyL5UpT/view?usp=sharing?page_id=785\\u0026preview=true#R-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-3 \\u0026nbsp; ONE-TO-THREE-FAMILY \\u0026 TOWNHOUSE RESIDENTIAL</a>                                                       </li>                                                   <li>                                              <div class='bullet' style='background:#ebd417'></div> <a href='https://drive.google.com/file/d/1t9xisuQtvTAhMBeTkEGEiWAAnSWrgwjq/view?usp=sharing?page_id=785\\u0026preview=true#R-4' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-4 \\u0026nbsp; LOW-RISE MULTIFAMILY RESIDENTIAL</a>                                                       </li>                                                        <li>                                              <div class='bullet' style='background:#b49d34'></div> <a href='https://drive.google.com/file/d/1zh4Ovlsm3adB9pdBLsOts_j4Xbfn9rPu/view?usp=sharing?page_id=785\\u0026preview=true#R-5' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-5 \\u0026nbsp; MID-RISE MULTIFAMILY RESIDENTIAL</a>                                                   </li>                                                   <li>                                              <div class='bullet' style='background:#998439'></div> <a href='https://drive.google.com/file/d/1h9w1ttkyAwZW_egxOSG2c6QLLRslUAqH/view?usp=sharing?page_id=785\\u0026preview=true#R-6' style='color: #2c7fb8; text-decoration: none;' target='_blank'>R-6 \\u0026nbsp; HIGH-RISE MULTIFAMILY RESIDENTIAL</a>                                                   </li>                                                       <li>                                              <div class='bullet' style='background:#fbc8b3'></div> <a href='https://drive.google.com/file/d/189Nv9zJIOh9Xu1mej40sQRw0u7mS-WWa/view?usp=sharing?page_id=785\\u0026preview=true#C-1' style='color: #2c7fb8; text-decoration: none;' target='_blank'>C-1 \\u0026nbsp; NEIGHBORHOOD COMMERCIAL</a>                                                           </li>                                                   <li>                                              <div class='bullet' style='background:#da2028'></div> <a href='https://drive.google.com/file/d/17W0H1DNDTgVobqcAxeIYTJtZYGYi27ZX/view?usp=sharing?page_id=785\\u0026preview=true#C-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>C-2 \\u0026nbsp; COMMUNITY COMMERCIAL</a>                                                   </li>                                                     <li>                                              <div class='bullet' style='background:#b12a2f'></div> <a href='https://drive.google.com/file/d/1H-yzguPyJixsU7EqyRneqfsWewpHVtM4/view?usp=sharing?page_id=785\\u0026preview=true#C-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>C-3 \\u0026nbsp; REGIONAL COMMERCIAL</a>                                                   </li>                                                   <li>                                              <div class='bullet' style='background:#e4a024'></div> <a href='https://drive.google.com/file/d/159zmZpq424EbJZwpnWRVhRp8NkNPhpLz/view?usp=sharing?page_id=785\\u0026preview=true#MX-1' style='color: #2c7fb8; text-decoration: none;' target='_blank'>MX-1 \\u0026nbsp; MIXED USE, RESIDENTIAL/COMMERCIAL</a>                                                       </li>                                                       <li>                                              <div class='bullet' style='background:#f37520'></div> <a href='https://drive.google.com/file/d/18FWuMPDjHlLrQM4WTZ5HqqbJkKYDTv17/view?usp=sharing?page_id=785\\u0026preview=true#MX-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>MX-2 \\u0026nbsp; MIXED USE, RESIDENTIAL/COMMERCIAL/INDUSTRIAL</a>                                                   </li>                          <li>                                              <div class='bullet' style='background:#f37520'></div> <a href='https://drive.google.com/file/d/12DDmnRz3d2SlUOatbQ-3WmuSTHrEwGXS/view?usp=sharing https://drive.google.com/file/d/17eqJ6mynaL32QsSA74XaC0lQQAZzCr7-/view?usp=sharing?page_id=785\\u0026preview=true#MX-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>MX-3 \\u0026nbsp; MIXED USE, RESIDENTIAL \\u0026 COMMERCIAL(HIGH DENSITY)</a>                                                   </li>\\t                                           <li>                                              <div class='bullet' style='background:#e1c3dd'></div> <a href='https://drive.google.com/file/d/1G1PlzPDkkz6OJndO-fVJuTVxkOrzTzOl/view?usp=sharing?page_id=785\\u0026preview=true#I-1' style='color: #2c7fb8; text-decoration: none;' target='_blank'>I-1 \\u0026nbsp; LIGHT INDUSTRIAL</a>                                                   </li>                                                       <li>                                              <div class='bullet' style='background:#d589ba'></div> <a href='https://drive.google.com/file/d/1UeJoOFOlhHt4o3eDydPR8K6tFh7UFDPd/view?usp=sharing?page_id=785\\u0026preview=true#I-2' style='color: #2c7fb8; text-decoration: none;' target='_blank'>I-2 \\u0026nbsp; MEDIUM INDUSTRIAL</a>                                                   </li>                                                       <li>                                              <div class='bullet' style='background:#c0188c'></div> <a href='https://drive.google.com/file/d/1aJWwQ4O4q29Qtm4gZ7AVl7JdeZB1v_SY/view?usp=sharing?page_id=785\\u0026preview=true#I-3' style='color: #2c7fb8; text-decoration: none;' target='_blank'>I-3 \\u0026nbsp; HEAVY INDUSTRIAL</a>                                                   </li>                                                      <li>                                              <div class='bullet' style='background:#006ab6'></div> <a href='https://goo.gl/images/UHCPsc?page_id=785\\u0026preview=true#INST' style='color: #2c7fb8; text-decoration: none;' target='_blank'>INST \\u0026nbsp; INSTITUTIONAL</a>                                                   </li>                                                   <li>                                              <div class='bullet' style='background:#4d8844'></div> <a ?page_id=785\\u0026preview=true#PARK' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PARK \\u0026nbsp; PARKS \\u0026 OPEN SPACE</a>                                                   </li>                                                   <li>                                              <div class='bullet' style='background:#8b6239'></div> <a ?page_id=785\\u0026preview=true#CEM' style='color: #2c7fb8; text-decoration: none;' target='_blank'>CEM \\u0026nbsp; CEMETERY</a>                                                   </li>                                                    <li>                                              <div class='bullet' style='background:#8c2e4f'></div> <a href='https://drive.google.com/file/d/1Ed6TpRREEnuPwDaOoLH4PaaAQGjpqiPY/view?usp=sharing?page_id=785\\u0026preview=true#EWR' style='color: #2c7fb8; text-decoration: none;' target='_blank'>EWR / EWS-S \\u0026nbsp; AIRPORT / AIRPORT SUPPORT</a>                                                   </li>                                                   <li>                                              <div class='bullet' style='background:#72305e'></div> <a href='https://drive.google.com/file/d/1HYlzfDMTano0ozaH8hk2-BAcF-e43o90/view?usp=sharing?page_id=785\\u0026preview=true#PORT' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PORT \\u0026nbsp; PORT</a>                                                       </li>                                                       <li>                                              <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/1Yh_afHKCC4ZeJURbqQFh6tiOdTAVe1nL/view?usp=sharing?page_id=785\\u0026preview=true#RDV' style='color: #2c7fb8; text-decoration: none;' target='_blank'>RDV / SD \\u0026nbsp; REDEVELOPMENT / SPECIAL DISTRICTS</a>                    </li>               \\t                    \\t                               <li>                                <li>       PDF Documents, Links, Portal, and Maps        <li>            <li>                                              <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/1d_7DnJQ5M5jdfhwx5RwATWMef5R8EOzu/view?usp=sharing?page_id=785\\u0026preview=true#RDV' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; ZONING ORDINANCE</a>          \\t                               </li>  \\t                               <li>                                    <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/100qSsj6oAfc7aGCB8BXbMulXsIZAugIr/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; INSTRUCTIONS FOR SITE PLAN APPROVAL</a>          \\t                               </li>                                <li>                                                    <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/1TxS-dQfA7VIupdwJG93IDYnQpcTj4hEW/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; SITE PLAN APPLICATION</a>                  \\t                               </li>   \\t                        <li>                                                    <div class='bullet' style='background:#dddddd'></div> <a href='https://drive.google.com/file/d/18qY2qb51_vwRIvFOGGHhreLCuf4AUoK5/view?usp=sharing' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF FILE \\u0026nbsp; OFFICIAL ZONING MAP</a>                  \\t                               </li>   \\t                     <li>                                                    <div class='bullet' style='background:#dddddd'></div> <a href='https://sites.google.com/view/zoningmap' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PORTAL \\u0026nbsp; Zoning Documents \\u0026 Minutes</a>                 \\t                               </li>        \\t                  <li>                                                    <div class='bullet' style='background:#72305e'></div> <a href='https://drive.google.com/file/d/1EaUiiDuVYeBk96C3E13ohPftN21G-NPo/view?usp=sharing?' style='color: #2c7fb8; text-decoration: none;' target='_blank'>PDF \\u0026nbsp; 2019 MONTHLY HEARING OF THE BOARDS DATES </a>                 \\t                               </li>                \\t         <li>                                                    <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_001/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.1 </a>                 \\t                               </li>                                 \\t         <li>                                                    <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_002/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.2 </a>                 \\t                               </li>                                                         \\t         <li>                                                    <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_003/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.3 </a>                 \\t                               </li>                                                        \\t         <li>                                                    <div class='bullet' style='background:#72305e'></div> <a href='https://www.loc.gov/item/sanborn05571_004/' style='color: #2c7fb8; text-decoration: none;' target='_blank'>LINK \\u0026nbsp; SANBORN MAPS 1892 VOL.4 </a>                 \\t                               </li>       \\t         <li>                                                    <div class='bullet' style='background:#72305e'></div> <a href='https://nzlur.carto.com/viz/f29323e8-df1d-4c80-8573-030e2aca5bd2/public_map' style='color: #2c7fb8; text-decoration: none;' target='_blank'> MAP \\u0026nbsp;ALTERNATIVE TREATMENT MAP </a>**               \\t                               </li>                                                 \\t         <li>                                                    <div class='bullet' style='background:#72305e'></div> <a href='https://nzlur.carto.com/viz/6b0b626a-e94c-4c1e-ac28-d97a89f576e7/public_map' style='color: #2c7fb8; text-decoration: none;' target='_blank'> MAP \\u0026nbsp;NEW ZONING MAP (UPDATE) </a> **              \\t                               </li>                                              \\t   <li>                                                   <div class='bullet' style='background:#72305e'></div> <a href='https://newarkportal.us/Home/Zoning' style='color: #2c7fb8; text-decoration: none;' target='_blank'> MAP \\u0026nbsp;Online Application </a> ***                 \\t                               </li>                                           ",
+                                "visible": true
+                            },
+                            "order": 7,
+                            "visible": true,
+                            "options": {
+                                "layer_name": "zoning_copy",
+                                "cartocss": "/** category visualization */  #zoning_copy {    polygon-opacity: 0.7;    line-color: #FFF;    line-width: 0.5;    line-opacity: 1; }  #zoning_copy[code='C-2'] {    polygon-fill: #da2028; } #zoning_copy[code='I-1'] {    polygon-fill: #e1c3dd; } #zoning_copy[code='I-3'] {    polygon-fill: #c0188c; } #zoning_copy[code='MX-1'] {    polygon-fill: #e4a024; } #zoning_copy[code='MX-2'] {    polygon-fill: #f37520; } #zoning_copy[code='R-1'] {    polygon-fill: #fffaca; } #zoning_copy[code='R-2'] {    polygon-fill: #fff68f; } #zoning_copy[code='R-3'] {    polygon-fill: #fff100; } #zoning_copy[code='R-4'] {    polygon-fill: #ebd417; } #zoning_copy[code='RDV'] {    polygon-fill: #dddddd; } #zoning_copy[code='EWR'] {    polygon-fill: #820c0c; } #zoning_copy[code='PARK'] {    polygon-fill: #229A00; } #zoning_copy[code='CEM'] {    polygon-fill: #561818; } #zoning_copy[code='INST'] {    polygon-fill: #0063ff; } #zoning_copy[code='PORT'] {    polygon-fill: #B81609; } #zoning_copy[code='MX-3'] {    polygon-fill: #FF2900; } #zoning_copy[code='C-3'] {    polygon-fill: #850204; } #zoning_copy[code='C-1'] {    polygon-fill: #fbc8b3; } #zoning_copy[code='I-2'] {    polygon-fill: #A53ED5; }",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id",
+                                "sql": "select * from zoning_copy",
+                                "table_name": "''."
+                            }
+                        },
+                        {
+                            "id": "97f33686-460c-4a46-a91a-9a11275af963",
+                            "type": "CartoDB",
+                            "infowindow": {
+                                "fields": [
+                                    {
+                                        "name": "column_1533841367597",
+                                        "title": true,
+                                        "position": 0
+                                    },
+                                    {
+                                        "name": "column_1571935764873",
+                                        "title": true,
+                                        "position": 1
+                                    }
+                                ],
+                                "template_name": "table/views/infowindow_light",
+                                "template": "<div class='cartodb-popup v2'>   <a href='#close' class='cartodb-popup-close-button close'>x</a>   <div class='cartodb-popup-content-wrapper'>     <div class='cartodb-popup-content'>       {{#content.fields}}         {{#title}}<h4>{{title}}</h4>{{/title}}         {{#value}}           <p {{#type}}class='{{ type }}'{{/type}}>{{{ value }}}</p>         {{/value}}         {{^value}}           <p class='empty'>null</p>         {{/value}}       {{/content.fields}}     </div>   </div>   <div class='cartodb-popup-tip-container'></div> </div> ",
+                                "alternative_names": {},
+                                "width": 226,
+                                "maxHeight": 180
+                            },
+                            "tooltip": {
+                                "fields": [
+                                    {
+                                        "name": "column_1533841367597",
+                                        "title": true,
+                                        "position": 0
+                                    },
+                                    {
+                                        "name": "column_1571935764873",
+                                        "title": true,
+                                        "position": 1
+                                    }
+                                ],
+                                "template_name": "tooltip_light",
+                                "template": "<div class='cartodb-tooltip-content-wrapper'>   <div class='cartodb-tooltip-content'>   {{#fields}}     {{#title}}     <h4>{{title}}</h4>     {{/title}}     <p>{{{ value }}}</p>   {{/fields}}   </div> </div>",
+                                "alternative_names": {},
+                                "maxHeight": 180
+                            },
+                            "legend": {
+                                "type": "none",
+                                "show_title": false,
+                                "title": "",
+                                "template": "",
+                                "visible": true
+                            },
+                            "order": 8,
+                            "visible": true,
+                            "options": {
+                                "layer_name": "west_wardmni_copy",
+                                "cartocss": "/** simple visualization */  #west_wardmni_copy{   polygon-fill: #FF6600;   polygon-opacity: 0.1;   line-color: #FFA300;   line-width: 8;   line-opacity: 1; }  #west_wardmni_copy::labels {   text-name: [column_1571935764873];   text-face-name: 'DejaVu Sans Book';   text-size: 17;   text-label-position-tolerance: 0;   text-fill: #000;   text-halo-fill: #FFFFFF;   text-halo-radius: 2;   text-dy: -10;   text-allow-overlap: true;   text-placement: line;   text-placement-type: dummy; } ",
+                                "cartocss_version": "2.1.1",
+                                "interactivity": "cartodb_id,column_1533841367597,column_1571935764873",
+                                "sql": "select * from west_wardmni_copy",
+                                "table_name": "''."
+                            }
+                        }
+                    ]
+                },
+                "attribution": ""
+            }
+        }
+    ],
+    "overlays": [
+        {
+            "type": "header",
+            "order": 1,
+            "options": {
+                "display": true,
+                "extra": {
+                    "title": "Newark Zoning Map",
+                    "description": "Newark NJ Zoning Map",
+                    "show_title": false,
+                    "show_description": true
+                }
+            },
+            "template": null
+        },
+        {
+            "type": "zoom",
+            "order": 3,
+            "options": {
+                "display": true,
+                "x": 20,
+                "y": 20
+            },
+            "template": "<a href='#zoom_in' class='zoom_in'>+</a> <a href='#zoom_out' class='zoom_out'>-</a>"
+        },
+        {
+            "type": "search",
+            "order": 3,
+            "options": {
+                "x": 20,
+                "y": 20,
+                "display": true
+            },
+            "template": null
+        },
+        {
+            "type": "layer_selector",
+            "order": 4,
+            "options": {
+                "x": 180,
+                "y": 20,
+                "display": true
+            },
+            "template": null
+        },
+        {
+            "type": "fullscreen",
+            "order": 4,
+            "options": {
+                "x": 20,
+                "y": 140,
+                "display": true
+            },
+            "template": null
+        },
+        {
+            "type": "loader",
+            "order": 5,
+            "options": {
+                "display": true,
+                "x": 20,
+                "y": 150
+            },
+            "template": "<div class='loader' original-title=''></div>"
+        },
+        {
+            "type": "logo",
+            "order": 6,
+            "options": {
+                "display": true,
+                "x": 10,
+                "y": 40
+            },
+            "template": ""
+        }
+    ],
+    "prev": null,
+    "next": null,
+    "transition_options": {
+        "time": 0
+    }
+}
